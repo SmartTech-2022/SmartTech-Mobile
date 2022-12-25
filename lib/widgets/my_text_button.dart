@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class MyTextButton extends StatelessWidget {
   const MyTextButton(
       {required this.onTap,
-       this.text,
+      this.text,
       this.width = double.infinity,
       this.height,
       this.child,
       this.color,
-      this.bgcolor,//background color
-      this.fgcolor,//foreground color
+      this.bgcolor, //background color
+      this.fgcolor, //foreground color
       this.textStyle,
       this.borderSide,
       super.key});
@@ -31,16 +31,19 @@ class MyTextButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onTap,
         style: ElevatedButton.styleFrom(
-          backgroundColor: bgcolor ??const Color(0xff027314),
-          foregroundColor:fgcolor?? const Color(0xffffffff),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0),side: borderSide ??BorderSide.none),
+          backgroundColor: bgcolor ?? const Color(0xff027314),
+          foregroundColor: fgcolor ?? const Color(0xff027314),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+              side: borderSide ?? BorderSide.none),
         ),
         child: child ??
-              Text(text!,
-                  style: textStyle ??
-                      const TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w600)),
+            Text(text!,
+                style: textStyle ??
+                    const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 20.0)),
       ),
     );
   }
