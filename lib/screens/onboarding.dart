@@ -19,6 +19,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Flexible(
       child: PageView(
         controller: controller,
+        physics: const BouncingScrollPhysics(),
         children: [
           Column(
             children: [
