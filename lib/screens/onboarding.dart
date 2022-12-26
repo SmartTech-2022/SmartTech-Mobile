@@ -69,7 +69,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Column(
             children: [
               Image.asset(
-                'assets/images/handvote.png',
+                'assets/images/onboardingchart.png',
                 width: screenWidth * 1,
                 height: screenHeight * 0.5,
                 fit: BoxFit.fill,
