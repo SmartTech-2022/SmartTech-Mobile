@@ -72,7 +72,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 'assets/images/onboardingchart.png',
                 width: screenWidth * 1,
                 height: screenHeight * 0.5,
-                fit: BoxFit.fill,
+                fit: BoxFit.contain,
               ),
               Container(
                 padding: const EdgeInsets.only(left: 20, right: 20),
