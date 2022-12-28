@@ -54,25 +54,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               SmoothPageIndicator(
                 controller: controller,
                 count: 2,
-                effect: const ScrollingDotsEffect(
-                  activeStrokeWidth: 2.6,
-                  activeDotScale: 1.3,
-                  maxVisibleDots: 5,
-                  radius: 8,
-                  spacing: 10,
-                  dotHeight: 12,
-                  dotWidth: 12,
-                ),
+                effect: ScrollingDotsEffect(
+                    activeStrokeWidth: 2.6,
+                    activeDotScale: 1.3,
+                    maxVisibleDots: 5,
+                    radius: 8,
+                    spacing: 10,
+                    dotHeight: 12,
+                    dotWidth: 12,
+                    dotColor: Colors.grey,
+                    activeDotColor: kPrimarycolor),
               ),
             ],
           ),
           Column(
             children: [
               Image.asset(
-                'assets/images/handvote.png',
+                'assets/images/onboardingchart.png',
                 width: screenWidth * 1,
                 height: screenHeight * 0.5,
-                fit: BoxFit.fill,
+                //color: Color.fromARGB(255, 248, 248, 246),
+                //fit: BoxFit.fill,
               ),
               Container(
                 padding: const EdgeInsets.only(left: 20, right: 20),
@@ -99,7 +101,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               SmoothPageIndicator(
                 controller: controller,
                 count: 2,
-                effect: const ScrollingDotsEffect(
+                effect: ScrollingDotsEffect(
                   activeStrokeWidth: 2.6,
                   activeDotScale: 1.3,
                   maxVisibleDots: 5,
@@ -107,6 +109,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   spacing: 10,
                   dotHeight: 12,
                   dotWidth: 12,
+                  dotColor: Colors.grey,
+                  activeDotColor: kPrimarycolor,
                 ),
               ),
             ],
