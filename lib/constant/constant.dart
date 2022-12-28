@@ -6,4 +6,4 @@ var kSecondarycolor = const Color(0xffffffff);
 var kBlackcolor = const Color(0xff000000);
 var bold = FontWeight.bold;
 //screen height
-double screenHeight(BuildContext ctx) => MediaQuery.of(ctx).size.height;
+double screenHeight(BuildContext context) => MediaQuery.of(context).size.height;
