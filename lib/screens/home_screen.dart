@@ -35,17 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
               fgcolor: kSecondarycolor,
               width: screenWidth * 0.9,
             ),
-            const Gap(20),
-            MyTextButton(
-              onTap: () => goToPush(context, const LoginScreen()),
-              text: 'Register',
-              bgcolor: kSecondarycolor,
-              fgcolor: kPrimarycolor,
-              width: screenWidth * 0.9,
-              textStyle: TextStyle(
-                  color: kPrimarycolor, fontWeight: bold, fontSize: 20),
-              borderSide: BorderSide(width: 1.0, color: kPrimarycolor),
-            ),
             const Gap(40),
           ],
         ),
