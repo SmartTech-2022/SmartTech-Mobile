@@ -86,12 +86,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                 TextStyle(fontSize: 20, color: kPrimarycolor),
                           ),
                           const Gap(5),
-                          Text(
-                            "Create Account",
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: kPrimarycolor,
-                                fontWeight: bold),
+                          GestureDetector(
+                            onTap: () {},
+                            child: Text(
+                              "Create Account",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: kPrimarycolor,
+                                  fontWeight: bold),
+                            ),
                           ),
                         ],
                       ),
