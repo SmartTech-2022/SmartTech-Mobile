@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
               fgcolor: kSecondarycolor,
               width: screenWidth * 0.9,
             ),
-            const Gap(40),
+            const Gap(45),
           ],
         ),
       ),
