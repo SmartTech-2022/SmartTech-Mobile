@@ -75,7 +75,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 fit: BoxFit.contain,
               ),
               Container(
-                padding: const EdgeInsets.only(left: 20, right: 20),
+                padding: const EdgeInsets.only(left: 19, right: 20),
                 child: Text(
                   "Monitor the Elections",
                   textAlign: TextAlign.center,
