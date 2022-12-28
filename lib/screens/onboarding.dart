@@ -69,7 +69,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Column(
             children: [
               Image.asset(
-                'assets/images/onboardingchart.png',
+                'assets/images/onboardchat.png',
                 width: screenWidth * 1,
                 height: screenHeight * 0.5,
                 fit: BoxFit.contain,

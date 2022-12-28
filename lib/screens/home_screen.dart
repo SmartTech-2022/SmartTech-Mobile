@@ -28,18 +28,18 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const OnboardingScreen(),
+            // const Gap(20),
+            // MyTextButton(
+            //   onTap: () => goToPush(context, const LoginScreen()),
+            //   text: 'Login',
+            //   bgcolor: kPrimarycolor,
+            //   fgcolor: kSecondarycolor,
+            //   width: screenWidth * 0.9,
+            // ),
             const Gap(20),
             MyTextButton(
               onTap: () => goToPush(context, const LoginScreen()),
-              text: 'Login',
-              bgcolor: kPrimarycolor,
-              fgcolor: kSecondarycolor,
-              width: screenWidth * 0.9,
-            ),
-            const Gap(20),
-            MyTextButton(
-              onTap: () => goToPush(context, const LoginScreen()),
-              text: 'Register',
+              text: 'Log in',
               bgcolor: kSecondarycolor,
               fgcolor: kPrimarycolor,
               width: screenWidth * 0.9,
