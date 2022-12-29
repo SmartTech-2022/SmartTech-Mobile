@@ -3,14 +3,14 @@ import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({super.key});
+class Onboarding extends StatefulWidget {
+  const Onboarding({super.key});
 
   @override
-  State<OnboardingScreen> createState() => _OnboardingScreenState();
+  State<Onboarding> createState() => _OnboardingState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class _OnboardingState extends State<Onboarding> {
   final controller = PageController(viewportFraction: 1);
   @override
   Widget build(BuildContext context) {
@@ -75,7 +75,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 fit: BoxFit.contain,
               ),
               Container(
-                padding: const EdgeInsets.only(left: 20, right: 20),
+                padding: const EdgeInsets.only(left: 8, right: 8),
                 child: Text(
                   "Monitor the Elections",
                   textAlign: TextAlign.center,
@@ -84,7 +84,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.only(left: 20, right: 20),
+                padding: const EdgeInsets.only(left: 8, right: 8),
                 child: Text(
                   "Watch the election results as \n they come in live without being left out",
                   textAlign: TextAlign.center,
