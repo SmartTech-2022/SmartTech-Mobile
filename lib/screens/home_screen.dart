@@ -30,8 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Row(
                     children: [
-                      Image.asset("assets/images/vectorcheck.png"),
-                      //const Icon(Icons.map),
+                      Image.asset("assets/images/mappin.png"),
                       Text(
                         "Asaba, Delta",
                         style: TextStyle(
