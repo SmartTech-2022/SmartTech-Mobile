@@ -10,6 +10,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 1;
+  bool hasVoted = true;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Gap(screenHeight(context) * 0.10),
+            Gap(screenHeight(context) * 0.08),
             Row(
               children: [
                 Column(
@@ -97,29 +105,124 @@ class _HomeScreenState extends State<HomeScreen> {
             const Gap(30),
             Container(
               width: double.infinity,
-              height: screenHeight(context) * 0.25,
+              height: screenHeight(context) * 0.23,
               decoration: BoxDecoration(
                 image: const DecorationImage(
-                    image: AssetImage("assets/images/fingermaker.png"),
-                    fit: BoxFit.cover),
+                    image: AssetImage("assets/images/ad.png"),
+                    fit: BoxFit.fill),
                 borderRadius: BorderRadius.circular(15.0),
               ),
-              child: Stack(children: [
-                Positioned(
-                  height: 50.0,
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/rectangle.png"),
-                      ),
+              child: const Text(""),
+            ),
+            const Gap(30),
+            hasVoted
+                ? Expanded(
+                    child: ListView.builder(
+                      itemCount: 2,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 16.0),
+                          child: ListTile(
+                            tileColor: kimageplaceholder,
+                            style: ListTileStyle.drawer,
+                            shape: Border.all(
+                              color: kPrimarycolorlight,
+                              width: 1.0,
+                            ),
+                            leading: const CircleAvatar(
+                              backgroundImage:
+                                  AssetImage("assets/images/sher2.png"),
+                            ),
+                            title: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text("Sheriff Oborevwori"),
+                                Text(
+                                  "People Democratic Party",
+                                  style: TextStyle(
+                                      color: kBlackcolor,
+                                      fontWeight: bold,
+                                      fontSize: 11.0),
+                                ),
+                              ],
+                            ),
+                            subtitle: Row(
+                              children: [
+                                Text(
+                                  "4,039,190",
+                                  style: TextStyle(
+                                      color: kBlackcolor,
+                                      fontWeight: bold,
+                                      fontSize: 24.0),
+                                ),
+                                Image.asset("assets/images/mic.png")
+                              ],
+                            ),
+                            trailing: CircleAvatar(
+                              backgroundImage:
+                                  AssetImage("assets/images/pdp.png"),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  )
+                : Container(
+                    width: double.infinity,
+                    height: screenHeight(context) * 0.15,
+                    decoration: BoxDecoration(
+                      color: ksurface2,
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Your votes will appear here after you vote.",
+                          style: TextStyle(
+                              color: kBlackcolor,
+                              fontWeight: bold,
+                              fontSize: 16.0),
+                        ),
+                        const Gap(10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Text("Tap the “vote icon” "),
+                            //Image.asset("assets/strokethumb.png"),
+                            Icon(
+                              Icons.thumb_up_outlined,
+                              size: 16.0,
+                            ),
+                            Text(" to start voting..........")
+                          ],
+                        ),
+                      ],
                     ),
                   ),
-                ),
-              ]),
-            ),
           ],
         ),
       )),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bar_chart_outlined),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.thumb_up_outlined),
+            label: '',
+          ),
+        ],
+        backgroundColor: kSecondarycolor,
+        currentIndex: _selectedIndex,
+        selectedItemColor: kPrimarycolor,
+        onTap: _onItemTapped,
+      ),
     );
   }
 }
