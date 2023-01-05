@@ -18,11 +18,7 @@ goToReplace(BuildContext context, page) {
   );
 }
 
-goToPop(BuildContext context, page) {
+goToPop(BuildContext context) {
   return Navigator.pop(
-    context,
-    MaterialPageRoute(
-      builder: (context) => page,
-    ),
-  );
+    context);
 }

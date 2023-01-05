@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
+import 'package:onevote/screens/election_stats_screen.dart';
+import 'package:onevote/screens/vote.dart';
+import 'package:onevote/widgets/elections.dart';
+import 'package:onevote/widgets/my_text_button.dart';
+import 'package:onevote/widgets/my_votes.dart';
+import 'package:onevote/widgets/widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,16 +16,24 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 1;
+  final int _selectedIndex = 1;
   bool hasVoted = true;
+
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      if (index == 2) {
+        goToPush(context, const Vote());
+      } else if (index == 1) {
+        goToReplace(context, const HomeScreen());
+      } else if (index == 0) {
+        goToPush(context, const ElectionStatistics());
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: kSecondarycolor,
       body: SafeArea(
@@ -67,40 +81,34 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const Gap(20),
             Container(
-              width: double.infinity,
-              height: 50.0,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: kPrimarycolorlight,
+                width: double.infinity,
+                height: 50.0,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: kPrimarycolorlight,
+                  ),
+                  borderRadius: BorderRadius.circular(15.0),
                 ),
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text("Upcoming Election Date:"),
-                  Text(
-                    "1st January 2023",
-                    style: TextStyle(color: kBlackcolor, fontWeight: bold),
-                  )
-                ],
-              ),
-            ),
+                child: RichText(
+                  text: TextSpan(
+                    text: 'Upcoimg Election Date: ',
+                    style: TextStyle(color: kBlackcolor),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: '1st January 2023',
+                        style: TextStyle(color: kBlackcolor, fontWeight: bold),
+                      ),
+                    ],
+                  ),
+                )),
             const Gap(10),
-            Container(
-              width: double.infinity,
-              height: 50.0,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: kPrimarycolor,
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: Text(
-                "Choose Election",
-                style: TextStyle(
-                    color: kSecondarycolor, fontWeight: bold, fontSize: 20.0),
-              ),
+            MyTextButton(
+              onTap: () => goToPush(context, const ElectionsCategory()),
+              text: 'Choose Election',
+              bgcolor: kPrimarycolor,
+              fgcolor: kSecondarycolor,
+              width: screenWidth,
             ),
             const Gap(30),
             Container(
@@ -114,58 +122,24 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: const Text(""),
             ),
-            const Gap(30),
             hasVoted
-                ? Expanded(
-                    child: ListView.builder(
-                      itemCount: 2,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(bottom: 16.0),
-                          child: ListTile(
-                            tileColor: kimageplaceholder,
-                            style: ListTileStyle.drawer,
-                            shape: Border.all(
-                              color: kPrimarycolorlight,
-                              width: 1.0,
-                            ),
-                            leading: const CircleAvatar(
-                              backgroundImage:
-                                  AssetImage("assets/images/sher2.png"),
-                            ),
-                            title: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text("Sheriff Oborevwori"),
-                                Text(
-                                  "People Democratic Party",
-                                  style: TextStyle(
-                                      color: kBlackcolor,
-                                      fontWeight: bold,
-                                      fontSize: 11.0),
-                                ),
-                              ],
-                            ),
-                            subtitle: Row(
-                              children: [
-                                Text(
-                                  "4,039,190",
-                                  style: TextStyle(
-                                      color: kBlackcolor,
-                                      fontWeight: bold,
-                                      fontSize: 24.0),
-                                ),
-                                Image.asset("assets/images/mic.png")
-                              ],
-                            ),
-                            trailing: CircleAvatar(
-                              backgroundImage:
-                                  AssetImage("assets/images/pdp.png"),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
+                ? Text(
+                    "My Votes",
+                    style: TextStyle(
+                        fontSize: 16.0,
+                        color: kBlackcolor,
+                        fontWeight: fnt500,
+                        height: 2),
+                  )
+                : Text("",
+                    style: TextStyle(
+                        fontSize: 16.0,
+                        color: kBlackcolor,
+                        fontWeight: fnt500,
+                        height: 3)),
+            hasVoted
+                ? const Expanded(
+                    child: MyVotes(),
                   )
                 : Container(
                     width: double.infinity,
