@@ -16,21 +16,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final int _selectedIndex = 1;
-  bool hasVoted = true;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      if (index == 2) {
-        goToPush(context, const Vote());
-      } else if (index == 1) {
-        goToReplace(context, const HomeScreen());
-      } else if (index == 0) {
-        goToPush(context, const ElectionStatistics());
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -110,6 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
               fgcolor: kSecondarycolor,
               width: screenWidth,
             ),
+<<<<<<< HEAD
             const Gap(30),
             Container(
               width: double.infinity,
@@ -174,6 +160,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
+=======
+            const Gap(45),
+>>>>>>> 48ce57980be408ad670d8274247b3c07133a75fb
           ],
         ),
       )),
