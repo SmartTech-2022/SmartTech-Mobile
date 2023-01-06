@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onevote/screens/splash_screen.dart';
+import 'package:onevote/screens/onboarding_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         useMaterial3: true,
       ),
-      home: const SafeArea(child: SplashScreen()),
+      home: const SafeArea(child: OnboardingScreen()),
     );
   }
 }

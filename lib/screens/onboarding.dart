@@ -54,7 +54,7 @@ class _OnboardingState extends State<Onboarding> {
               SmoothPageIndicator(
                 controller: controller,
                 count: 2,
-                effect: const ScrollingDotsEffect(
+                effect: ScrollingDotsEffect(
                   activeStrokeWidth: 2.6,
                   activeDotScale: 1.3,
                   maxVisibleDots: 5,
@@ -62,6 +62,8 @@ class _OnboardingState extends State<Onboarding> {
                   spacing: 10,
                   dotHeight: 12,
                   dotWidth: 12,
+                  dotColor: Colors.grey,
+                  activeDotColor: kPrimarycolor,
                 ),
               ),
             ],
@@ -99,7 +101,7 @@ class _OnboardingState extends State<Onboarding> {
               SmoothPageIndicator(
                 controller: controller,
                 count: 2,
-                effect: const ScrollingDotsEffect(
+                effect:  ScrollingDotsEffect(
                   activeStrokeWidth: 2.6,
                   activeDotScale: 1.3,
                   maxVisibleDots: 5,
@@ -107,6 +109,8 @@ class _OnboardingState extends State<Onboarding> {
                   spacing: 10,
                   dotHeight: 12,
                   dotWidth: 12,
+                  dotColor: Colors.grey,
+                  activeDotColor: kPrimarycolor,
                 ),
               ),
             ],
