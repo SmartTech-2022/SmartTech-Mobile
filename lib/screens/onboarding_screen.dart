@@ -29,14 +29,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Onboarding(),
-            // const Gap(20),
-            // MyTextButton(
-            //   onTap: () => goToPush(context, const LoginScreen()),
-            //   text: 'Login',
-            //   bgcolor: kPrimarycolor,
-            //   fgcolor: kSecondarycolor,
-            //   width: screenWidth * 0.9,
-            // ),
             const Gap(20),
             MyTextButton(
               onTap: () => goToPush(context, const LoginScreen()),

@@ -3,7 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
 import 'package:onevote/screens/home_screen.dart';
 import 'package:onevote/screens/statistics_result_screen.dart';
-import 'package:onevote/screens/vote.dart';
+import 'package:onevote/widgets/bottomnav.dart';
 import 'package:onevote/widgets/my_container.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/widgets/widget.dart';
@@ -16,19 +16,7 @@ class ElectionStatistics extends StatefulWidget {
 }
 
 class _ElectionStatisticsState extends State<ElectionStatistics> {
-  final int _selectedIndex = 0;
-  void _onItemTapped(int index) {
-    setState(() {
-      if (index == 2) {
-        goToPush(context, const Vote());
-      } else if (index == 1) {
-        goToReplace(context, const HomeScreen());
-      } else if (index == 0) {
-        goToReplace(context, const ElectionStatistics());
-      }
-    });
-  }
-
+  final int _selectedid = 0;
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -41,7 +29,7 @@ class _ElectionStatisticsState extends State<ElectionStatistics> {
             Gap(screenHeight(context) * 0.08),
             TextButton.icon(
                 onPressed: () {
-                  goToPop(context);
+                  goToReplace(context, const HomeScreen());
                 },
                 icon: Icon(
                   Icons.arrow_back,
@@ -70,7 +58,7 @@ class _ElectionStatisticsState extends State<ElectionStatistics> {
             ),
             const Gap(10.0),
             MyTextButton(
-              onTap: () => goToReplace(context, const StatisticsResult()),
+              onTap: () => goToPush(context, const StatisticsResult()),
               text: 'See Result',
               bgcolor: kPrimarycolor,
               fgcolor: kSecondarycolor,
@@ -80,26 +68,7 @@ class _ElectionStatisticsState extends State<ElectionStatistics> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart_outlined),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.thumb_up_outlined),
-            label: '',
-          ),
-        ],
-        backgroundColor: kSecondarycolor,
-        currentIndex: _selectedIndex,
-        selectedItemColor: kPrimarycolor,
-        onTap: _onItemTapped,
-      ),
+      bottomNavigationBar: BottomNavBars(selectedid: _selectedid),
     );
   }
 }

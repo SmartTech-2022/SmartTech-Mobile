@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
 import 'package:onevote/screens/home_screen.dart';
+import 'package:onevote/widgets/bottomnav.dart';
 import 'package:onevote/widgets/my_container.dart';
 import 'package:onevote/widgets/vote_cardboard.dart';
 import 'package:onevote/widgets/widget.dart';
@@ -14,19 +15,7 @@ class Vote extends StatefulWidget {
 }
 
 class _VoteState extends State<Vote> {
-  final int _selectedIndex = 2;
-  bool hasVoted = true;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      if (index == 2) {
-        goToPush(context, const Vote());
-      } else if (index == 1) {
-        goToPush(context, const HomeScreen());
-      }
-    });
-  }
-
+  final int _selectedid = 2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,16 +27,16 @@ class _VoteState extends State<Vote> {
             Gap(screenHeight(context) * 0.08),
             TextButton.icon(
                 onPressed: () {
-                  goToPop(context);
+                  goToReplace(context, const HomeScreen());
                 },
                 icon: Icon(
                   Icons.arrow_back,
-                  color: kBlackcolor,
+                  color: kPrimarycolor,
                 ),
                 label: Text(
                   "Vote",
                   style: TextStyle(
-                      fontSize: 16.0, color: kBlackcolor, fontWeight: fnt500),
+                      fontSize: 16.0, color: kPrimarycolor, fontWeight: fnt500),
                 )),
             const Gap(20),
             MyContainer(
@@ -70,26 +59,7 @@ class _VoteState extends State<Vote> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart_outlined),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.thumb_up_outlined),
-            label: '',
-          ),
-        ],
-        backgroundColor: kSecondarycolor,
-        currentIndex: _selectedIndex,
-        selectedItemColor: kPrimarycolor,
-        onTap: _onItemTapped,
-      ),
+      bottomNavigationBar: BottomNavBars(selectedid: _selectedid),
     );
   }
 }

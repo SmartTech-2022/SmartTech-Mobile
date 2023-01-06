@@ -40,10 +40,6 @@ class _BallotScreenState extends State<BallotScreen> {
                       fontSize: 16.0, color: kPrimarycolor, fontWeight: fnt500),
                 )),
             const Gap(10),
-            // const Expanded(
-            //   child: MyVotes(),
-            // ),
-            // const Gap(20),
             GestureDetector(
               onTap: () {
                 goToReplace(context, const ElectionsCategory());
@@ -94,17 +90,6 @@ class _BallotScreenState extends State<BallotScreen> {
           ],
         ),
       ),
-      // bottomSheet: Padding(
-      //   padding: const EdgeInsets.fromLTRB(11.0, 0, 11.0, 40.0),
-      //   child: MyTextButton(
-      //     onTap: () => goToReplace(context, const SuccessfulScreen()),
-      //     text: 'Vote Now',
-      //     bgcolor: kPrimarycolor,
-      //     fgcolor: kSecondarycolor,
-      //     width: screenWidth,
-      //     textStyle: TextStyle(fontWeight: fnt500, fontSize: 16.0),
-      //   ),
-      // ),
     );
   }
 }

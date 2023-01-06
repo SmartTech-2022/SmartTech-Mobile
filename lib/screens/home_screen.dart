@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
-import 'package:onevote/screens/election_stats_screen.dart';
-import 'package:onevote/screens/vote.dart';
+import 'package:onevote/widgets/bottomnav.dart';
 import 'package:onevote/widgets/elections.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/widgets/my_votes.dart';
@@ -18,19 +17,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final int _selectedIndex = 1;
   bool hasVoted = true;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      if (index == 2) {
-        goToPush(context, const Vote());
-      } else if (index == 1) {
-        goToReplace(context, const HomeScreen());
-      } else if (index == 0) {
-        goToPush(context, const ElectionStatistics());
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -177,26 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       )),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart_outlined),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.thumb_up_outlined),
-            label: '',
-          ),
-        ],
-        backgroundColor: kSecondarycolor,
-        currentIndex: _selectedIndex,
-        selectedItemColor: kPrimarycolor,
-        onTap: _onItemTapped,
-      ),
+      bottomNavigationBar: BottomNavBars(selectedid: _selectedIndex),
     );
   }
 }

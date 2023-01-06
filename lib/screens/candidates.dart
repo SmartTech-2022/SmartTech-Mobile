@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
-import 'package:onevote/screens/home_screen.dart';
+import 'package:onevote/widgets/bottomnav.dart';
 import 'package:onevote/widgets/candidates_list.dart';
 import 'package:onevote/widgets/my_container.dart';
 import 'package:onevote/widgets/widget.dart';
@@ -14,19 +14,8 @@ class CandidatesScreen extends StatefulWidget {
 }
 
 class _CandidatesScreenState extends State<CandidatesScreen> {
-  final int _selectedIndex = 2;
+  final int _selectedid = 2;
   bool hasVoted = true;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      if (index == 2) {
-        goToPush(context, const CandidatesScreen());
-      } else if (index == 1) {
-        goToPush(context, const HomeScreen());
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,26 +60,7 @@ class _CandidatesScreenState extends State<CandidatesScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart_outlined),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.thumb_up_outlined),
-            label: '',
-          ),
-        ],
-        backgroundColor: kSecondarycolor,
-        currentIndex: _selectedIndex,
-        selectedItemColor: kPrimarycolor,
-        onTap: _onItemTapped,
-      ),
+      bottomNavigationBar: BottomNavBars(selectedid: _selectedid),
     );
   }
 }
