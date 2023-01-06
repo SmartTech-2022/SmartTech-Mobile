@@ -54,7 +54,8 @@ class _OnboardingState extends State<Onboarding> {
               SmoothPageIndicator(
                 controller: controller,
                 count: 2,
-                effect: const ScrollingDotsEffect(
+                effect: ScrollingDotsEffect(
+<<<<<<< HEAD
                   activeStrokeWidth: 2.6,
                   activeDotScale: 1.3,
                   maxVisibleDots: 5,
@@ -62,17 +63,38 @@ class _OnboardingState extends State<Onboarding> {
                   spacing: 10,
                   dotHeight: 12,
                   dotWidth: 12,
+                  dotColor: Colors.grey,
+                  activeDotColor: kPrimarycolor,
                 ),
+=======
+                    activeStrokeWidth: 2.6,
+                    activeDotScale: 1.3,
+                    maxVisibleDots: 5,
+                    radius: 8,
+                    spacing: 10,
+                    dotHeight: 12,
+                    dotWidth: 12,
+                    dotColor: Colors.grey,
+                    activeDotColor: kPrimarycolor),
+>>>>>>> 48ce57980be408ad670d8274247b3c07133a75fb
               ),
             ],
           ),
           Column(
             children: [
               Image.asset(
+<<<<<<< HEAD
                 'assets/images/onboardchat.png',
                 width: screenWidth * 1,
                 height: screenHeight * 0.5,
                 fit: BoxFit.contain,
+=======
+                'assets/images/onboardingchart.png',
+                width: screenWidth * 1,
+                height: screenHeight * 0.5,
+                //color: Color.fromARGB(255, 248, 248, 246),
+                //fit: BoxFit.fill,
+>>>>>>> 48ce57980be408ad670d8274247b3c07133a75fb
               ),
               Container(
                 padding: const EdgeInsets.only(left: 8, right: 8),
@@ -99,7 +121,11 @@ class _OnboardingState extends State<Onboarding> {
               SmoothPageIndicator(
                 controller: controller,
                 count: 2,
-                effect: const ScrollingDotsEffect(
+<<<<<<< HEAD
+                effect:  ScrollingDotsEffect(
+=======
+                effect: ScrollingDotsEffect(
+>>>>>>> 48ce57980be408ad670d8274247b3c07133a75fb
                   activeStrokeWidth: 2.6,
                   activeDotScale: 1.3,
                   maxVisibleDots: 5,
@@ -107,6 +133,8 @@ class _OnboardingState extends State<Onboarding> {
                   spacing: 10,
                   dotHeight: 12,
                   dotWidth: 12,
+                  dotColor: Colors.grey,
+                  activeDotColor: kPrimarycolor,
                 ),
               ),
             ],
