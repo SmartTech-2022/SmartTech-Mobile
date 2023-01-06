@@ -3,14 +3,14 @@ import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({super.key});
+class Onboarding extends StatefulWidget {
+  const Onboarding({super.key});
 
   @override
-  State<OnboardingScreen> createState() => _OnboardingScreenState();
+  State<Onboarding> createState() => _OnboardingState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class _OnboardingState extends State<Onboarding> {
   final controller = PageController(viewportFraction: 1);
   @override
   Widget build(BuildContext context) {
@@ -55,6 +55,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 controller: controller,
                 count: 2,
                 effect: ScrollingDotsEffect(
+<<<<<<< HEAD
+                  activeStrokeWidth: 2.6,
+                  activeDotScale: 1.3,
+                  maxVisibleDots: 5,
+                  radius: 8,
+                  spacing: 10,
+                  dotHeight: 12,
+                  dotWidth: 12,
+                  dotColor: Colors.grey,
+                  activeDotColor: kPrimarycolor,
+                ),
+=======
                     activeStrokeWidth: 2.6,
                     activeDotScale: 1.3,
                     maxVisibleDots: 5,
@@ -64,20 +76,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     dotWidth: 12,
                     dotColor: Colors.grey,
                     activeDotColor: kPrimarycolor),
+>>>>>>> 48ce57980be408ad670d8274247b3c07133a75fb
               ),
             ],
           ),
           Column(
             children: [
               Image.asset(
+<<<<<<< HEAD
+                'assets/images/onboardchat.png',
+                width: screenWidth * 1,
+                height: screenHeight * 0.5,
+                fit: BoxFit.contain,
+=======
                 'assets/images/onboardingchart.png',
                 width: screenWidth * 1,
                 height: screenHeight * 0.5,
                 //color: Color.fromARGB(255, 248, 248, 246),
                 //fit: BoxFit.fill,
+>>>>>>> 48ce57980be408ad670d8274247b3c07133a75fb
               ),
               Container(
-                padding: const EdgeInsets.only(left: 20, right: 20),
+                padding: const EdgeInsets.only(left: 8, right: 8),
                 child: Text(
                   "Monitor the Elections",
                   textAlign: TextAlign.center,
@@ -86,7 +106,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.only(left: 20, right: 20),
+                padding: const EdgeInsets.only(left: 8, right: 8),
                 child: Text(
                   "Watch the election results as \n they come in live without being left out",
                   textAlign: TextAlign.center,
@@ -101,7 +121,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               SmoothPageIndicator(
                 controller: controller,
                 count: 2,
+<<<<<<< HEAD
+                effect:  ScrollingDotsEffect(
+=======
                 effect: ScrollingDotsEffect(
+>>>>>>> 48ce57980be408ad670d8274247b3c07133a75fb
                   activeStrokeWidth: 2.6,
                   activeDotScale: 1.3,
                   maxVisibleDots: 5,
