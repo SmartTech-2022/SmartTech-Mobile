@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
 import 'package:onevote/screens/login_screen.dart';
-import 'package:onevote/screens/onboarding.dart';
+import 'package:onevote/widgets/onboarding.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/widgets/widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -14,6 +15,12 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
+  _seenOnBoard() async {
+    int isSeen = 0;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('onBoarding', isSeen);
+  }
+
   final controller = PageController(viewportFraction: 1);
   @override
   Widget build(BuildContext context) {
@@ -22,7 +29,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       backgroundColor: kSecondarycolor,
       body: Container(
-        height: screenHeight * 1,
         width: double.infinity,
         color: kSecondarycolor,
         child: Column(
@@ -39,7 +45,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             // ),
             const Gap(20),
             MyTextButton(
-              onTap: () => goToPush(context, const LoginScreen()),
+              onTap: () {
+                _seenOnBoard();
+                goToReplace(context, const LoginScreen());
+              },
               text: 'Log in',
               bgcolor: kSecondarycolor,
               fgcolor: kPrimarycolor,
