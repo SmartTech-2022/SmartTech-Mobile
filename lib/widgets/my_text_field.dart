@@ -39,8 +39,4 @@ class MyTextField extends StatelessWidget {
               borderSide: BorderSide(color: kPrimarycolor))),
     );
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 48ce57980be408ad670d8274247b3c07133a75fb
