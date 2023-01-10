@@ -13,7 +13,7 @@ class SharedPreferenceHelper {
 
   Future<String> getUserToken({required userToken}) async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
-    userToken = pref.getString(userToken) ?? null;
+    userToken = pref.getString(userToken);
     return userToken;
   }
 

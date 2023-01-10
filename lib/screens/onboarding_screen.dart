@@ -6,7 +6,6 @@ import 'package:onevote/screens/login_screen.dart';
 import 'package:onevote/widgets/onboarding.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/widgets/widget.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
