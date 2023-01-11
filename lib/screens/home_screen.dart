@@ -6,7 +6,7 @@ import 'package:onevote/screens/vote.dart';
 import 'package:onevote/widgets/elections.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/widgets/my_votes.dart';
-import 'package:onevote/widgets/widget.dart';
+import 'package:onevote/utils/navigator.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

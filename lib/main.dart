@@ -7,7 +7,7 @@ int? isSeen;
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-   isSeen = prefs.getInt('onBoarding');
+  isSeen = prefs.getInt('onBoarding');
   runApp(const MyApp());
 }
 
@@ -24,7 +24,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         useMaterial3: true,
       ),
-      home: isSeen !=0 ? const SafeArea(child: OnboardingScreen()):const SafeArea(child: LoginScreen()),
+      home: isSeen != 1
+          ? const SafeArea(child: OnboardingScreen())
+          : const SafeArea(child: LoginScreen()),
     );
   }
 }

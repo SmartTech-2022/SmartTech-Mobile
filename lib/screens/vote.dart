@@ -4,7 +4,7 @@ import 'package:onevote/constant/constant.dart';
 import 'package:onevote/screens/home_screen.dart';
 import 'package:onevote/widgets/my_container.dart';
 import 'package:onevote/widgets/vote_cardboard.dart';
-import 'package:onevote/widgets/widget.dart';
+import 'package:onevote/utils/navigator.dart';
 
 class Vote extends StatefulWidget {
   const Vote({super.key});

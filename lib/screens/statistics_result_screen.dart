@@ -5,7 +5,7 @@ import 'package:onevote/screens/election_stats_screen.dart';
 import 'package:onevote/screens/home_screen.dart';
 import 'package:onevote/screens/vote.dart';
 import 'package:onevote/widgets/stats_result_widget.dart';
-import 'package:onevote/widgets/widget.dart';
+import 'package:onevote/utils/navigator.dart';
 
 class StatisticsResult extends StatefulWidget {
   const StatisticsResult({super.key});
