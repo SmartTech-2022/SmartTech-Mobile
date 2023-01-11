@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
 import 'package:onevote/screens/home_screen.dart';
+import 'package:onevote/utils/validator.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/widgets/my_text_field.dart';
 import 'package:onevote/utils/navigator.dart';
@@ -13,7 +14,7 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen> with Validator {
   final _formKey = GlobalKey<FormState>();
   final vin = TextEditingController();
   final password = TextEditingController();
@@ -48,11 +49,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     MyTextField(
                       controller: vin,
+                      validator: validateVin,
                       hintText: "VIN",
                     ),
                     const Gap(30),
                     MyTextField(
                       controller: password,
+                      validator: validatePassword,
                       hintText: "Password",
                       isObscure: _obscureText,
                       suffixIcon: IconButton(
@@ -67,7 +70,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     const Gap(30),
                     MyTextButton(
                       onTap: () {
-                        goToReplace(context, const HomeScreen());
+                        if (_formKey.currentState!.validate()) {
+                          goToReplace(context, const HomeScreen());
+                        }
                       },
                       text: "Log in",
                     ),
