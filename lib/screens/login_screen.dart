@@ -4,7 +4,7 @@ import 'package:onevote/constant/constant.dart';
 import 'package:onevote/screens/home_screen.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/widgets/my_text_field.dart';
-import 'package:onevote/widgets/widget.dart';
+import 'package:onevote/utils/navigator.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

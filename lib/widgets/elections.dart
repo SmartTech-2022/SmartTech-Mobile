@@ -4,7 +4,7 @@ import 'package:onevote/screens/candidates.dart';
 import 'package:onevote/screens/home_screen.dart';
 import 'package:onevote/screens/vote.dart';
 import 'package:onevote/widgets/my_container.dart';
-import 'package:onevote/widgets/widget.dart';
+import 'package:onevote/utils/navigator.dart';
 
 class ElectionsCategory extends StatefulWidget {
   const ElectionsCategory({super.key});

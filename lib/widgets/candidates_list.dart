@@ -3,7 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
 import 'package:onevote/screens/candidates_profile_screen.dart';
 import 'package:onevote/widgets/my_container.dart';
-import 'package:onevote/widgets/widget.dart';
+import 'package:onevote/utils/navigator.dart';
 
 class CandidateList extends StatefulWidget {
   const CandidateList({super.key});
