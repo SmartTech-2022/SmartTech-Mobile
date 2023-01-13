@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
+import 'package:onevote/screens/candidates.dart';
 import 'package:onevote/screens/election_stats_screen.dart';
 import 'package:onevote/screens/vote.dart';
+import 'package:onevote/widgets/candidates_list.dart';
 import 'package:onevote/widgets/elections.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/widgets/my_votes.dart';
@@ -17,18 +19,19 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final int _selectedIndex = 1;
-  bool hasVoted = true;
+  bool hasVoted = false;
   void _onItemTapped(int index) {
-     setState(() {
-       if (index == 2) {
-         goToPush(context, const Vote());
-       } else if (index == 1) {
-         goToReplace(context, const HomeScreen());
-       } else if (index == 0) {
-         goToPush(context, const ElectionStatistics());
-       }
-     });
-   }
+    setState(() {
+      if (index == 2) {
+        goToPush(context, const Vote());
+      } else if (index == 1) {
+        goToReplace(context, const HomeScreen());
+      } else if (index == 0) {
+        goToPush(context, const ElectionStatistics());
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -78,28 +81,32 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             const Gap(20),
-            Container(
-                width: double.infinity,
-                height: 50.0,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: kPrimarycolorlight,
+            GestureDetector(
+              onTap: () => goToPush(context, const Vote()),
+              child: Container(
+                  width: double.infinity,
+                  height: 50.0,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: kPrimarycolorlight,
+                    ),
+                    borderRadius: BorderRadius.circular(15.0),
                   ),
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                child: RichText(
-                  text: TextSpan(
-                    text: 'Upcoimg Election Date: ',
-                    style: TextStyle(color: kBlackcolor),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: '1st January 2023',
-                        style: TextStyle(color: kBlackcolor, fontWeight: bold),
-                      ),
-                    ],
-                  ),
-                )),
+                  child: RichText(
+                    text: TextSpan(
+                      text: 'Upcoimg Election Date: ',
+                      style: TextStyle(color: kBlackcolor),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: '1st January 2023',
+                          style:
+                              TextStyle(color: kBlackcolor, fontWeight: bold),
+                        ),
+                      ],
+                    ),
+                  )),
+            ),
             const Gap(10),
             MyTextButton(
               onTap: () => goToPush(context, const ElectionsCategory()),
@@ -141,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   )
                 : Container(
                     width: double.infinity,
-                    height: screenHeight(context) * 0.15,
+                    height: screenHeight(context) * 0.10,
                     decoration: BoxDecoration(
                       color: ksurface2,
                       borderRadius: BorderRadius.circular(15.0),
