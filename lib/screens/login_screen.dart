@@ -27,65 +27,60 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
         color: kSecondarycolor,
         padding: EdgeInsets.only(
             left: 20, right: 20, top: screenHeight(context) * 0.25),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Welcome Back",
-              style:
-                  TextStyle(color: kBlackcolor, fontSize: 30, fontWeight: bold),
-            ),
-            Text(
-              "Please enter your details to continue",
-              style: TextStyle(
-                color: kPrimarycolor,
-                fontSize: 18,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Welcome Back",
+                style: TextStyle(
+                    color: kBlackcolor, fontSize: 30, fontWeight: bold),
               ),
-            ),
-            const Gap(50),
-            Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    MyTextField(
-                      controller: vin,
-                      validator: validateVin,
-                      hintText: "VIN",
-                    ),
-                    const Gap(30),
-                    MyTextField(
-                      controller: password,
-                      validator: validatePassword,
-                      hintText: "Password",
-                      isObscure: _obscureText,
-                      suffixIcon: IconButton(
-                        icon: Icon(_obscureText
-                            ? Icons.visibility_outlined
-                            : Icons.visibility_off),
-                        onPressed: () {
-                          togglestate();
+              Text(
+                "Please enter your details to continue",
+                style: TextStyle(
+                  color: kPrimarycolor,
+                  fontSize: 18,
+                ),
+              ),
+              const Gap(50),
+              Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      MyTextField(
+                        controller: vin,
+                        validator: validateVin,
+                        hintText: "VIN",
+                      ),
+                      const Gap(30),
+                      MyTextField(
+                        controller: password,
+                        validator: validatePassword,
+                        hintText: "Password",
+                        isObscure: _obscureText,
+                        suffixIcon: IconButton(
+                          icon: Icon(_obscureText
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off),
+                          onPressed: () {
+                            togglestate();
+                          },
+                        ),
+                      ),
+                      const Gap(30),
+                      MyTextButton(
+                        onTap: () {
+                          if (_formKey.currentState!.validate()) {
+                            goToReplace(context, const HomeScreen());
+                          }
                         },
+                        text: "Log in",
                       ),
-                    ),
-                    const Gap(30),
-                    MyTextButton(
-                      onTap: () {
-                        if (_formKey.currentState!.validate()) {
-                          goToReplace(context, const HomeScreen());
-                        }
-                      },
-                      text: "Log in",
-                    ),
-                    const Gap(30),
-                    GestureDetector(
-                      child: Text(
-                        "Forgot Password?",
-                        style: TextStyle(color: kPrimarycolor, fontSize: 20),
-                      ),
-                    ),
-                  ],
-                )),
-          ],
+                    ],
+                  )),
+            ],
+          ),
         ),
       ),
     );
