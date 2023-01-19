@@ -6,7 +6,7 @@ class SharedPreferenceHelper {
   Future<void> setUserToken({required String userToken}) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString(token, userToken);
-    print(prefs.getString('Token'));
+    print(prefs.getString(token));
   }
 
   Future<String> getUserToken({required userToken}) async {
