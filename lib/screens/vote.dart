@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
+import 'package:onevote/screens/election_stats_screen.dart';
 import 'package:onevote/screens/home_screen.dart';
 import 'package:onevote/widgets/my_container.dart';
 import 'package:onevote/widgets/vote_cardboard.dart';
@@ -23,6 +24,8 @@ class _VoteState extends State<Vote> {
         goToPush(context, const Vote());
       } else if (index == 1) {
         goToPush(context, const HomeScreen());
+      } else if (index == 0) {
+        goToPush(context, const ElectionStatistics());
       }
     });
   }

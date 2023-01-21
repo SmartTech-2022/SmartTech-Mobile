@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferenceHelper {
@@ -8,7 +6,7 @@ class SharedPreferenceHelper {
   Future<void> setUserString({required userString}) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setStringList(user, userString);
-    print(prefs.getStringList(user));
+   // print(prefs.getStringList(user));
   }
 
   getUserString() async {
