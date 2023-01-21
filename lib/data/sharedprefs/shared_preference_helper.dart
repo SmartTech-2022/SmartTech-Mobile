@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferenceHelper {
@@ -6,6 +8,10 @@ class SharedPreferenceHelper {
   authToken(String token) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString("auth_token", jsonEncode(token));
+  }
+  userData(String userData) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString("auth_token", jsonEncode(userData));
   }
 
   Future<void> setSeenOnboarding() async {
