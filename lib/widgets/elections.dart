@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:onevote/constant/constant.dart';
 import 'package:onevote/screens/election_stats_screen.dart';
 import 'package:onevote/screens/home_screen.dart';
-import 'package:onevote/screens/vote.dart';
 import 'package:onevote/widgets/elections_selection.dart';
 import 'package:onevote/widgets/my_container.dart';
 import 'package:onevote/utils/navigator.dart';
@@ -21,7 +20,7 @@ class _ElectionsCategoryState extends State<ElectionsCategory> {
   void _onItemTapped(int index) {
     setState(() {
       if (index == 2) {
-        goToPush(context, const Vote());
+        goToPush(context, const ElectionsCategory());
       } else if (index == 1) {
         goToPush(context, const HomeScreen());
       } else if (index == 0) {
@@ -39,7 +38,7 @@ class _ElectionsCategoryState extends State<ElectionsCategory> {
           child: Container(
             clipBehavior: Clip.none,
             child: ListView.builder(
-              itemCount: 4,
+              itemCount: 1,
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
@@ -49,12 +48,12 @@ class _ElectionsCategoryState extends State<ElectionsCategory> {
                     padding: const EdgeInsets.only(bottom: 16.0),
                     child: MyContainer(
                         padding:
-                            const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 20.0),
+                            const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
                         width: double.infinity,
                         alignment: Alignment.center,
                         child: Text(
                           "INEC ELECTION",
-                          style: TextStyle(fontWeight: fnt600),
+                          style: TextStyle(fontWeight: fnt600, fontSize: 18.0),
                         )),
                   ),
                 );

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
-import 'package:onevote/data/sharedprefs/shared_preference_helper.dart';
+// import 'package:onevote/data/sharedprefs/shared_preference_helper.dart';
 import 'package:onevote/screens/election_stats_screen.dart';
-import 'package:onevote/screens/vote.dart';
+import 'package:onevote/widgets/drawer_widget.dart';
 import 'package:onevote/widgets/elections.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/widgets/my_votes.dart';
@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void _onItemTapped(int index) {
     setState(() {
       if (index == 2) {
-        goToPush(context, const Vote());
+        goToPush(context, const ElectionsCategory());
       } else if (index == 1) {
         goToReplace(context, const HomeScreen());
       } else if (index == 0) {
@@ -43,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: kSecondarycolor,
+      drawer: const DrawerWidgt(),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.only(left: 8.0, right: 8.0),
@@ -71,49 +72,24 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
                 Gap(screenHeight(context) * 0.26),
-                Container(
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: kimageplaceholder,
-                  ),
-                  child: Icon(
-                    Icons.person,
-                    color: kBlackcolor,
-                    size: 29.0,
-                  ),
-                )
+                Builder(builder: (context) {
+                  return GestureDetector(
+                    onTap: () => Scaffold.of(context).openDrawer(),
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: const DecorationImage(
+                            image: AssetImage("assets/images/avatar.png")),
+                        color: kimageplaceholder,
+                      ),
+                    ),
+                  );
+                })
               ],
             ),
             const Gap(20),
-            GestureDetector(
-              onTap: () => goToPush(context, const Vote()),
-              child: Container(
-                  width: double.infinity,
-                  height: 50.0,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: kPrimarycolorlight,
-                    ),
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  child: RichText(
-                    text: TextSpan(
-                      text: 'Upcoimg Election Date: ',
-                      style: TextStyle(color: kBlackcolor),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: '1st January 2023',
-                          style:
-                              TextStyle(color: kBlackcolor, fontWeight: bold),
-                        ),
-                      ],
-                    ),
-                  )),
-            ),
-            const Gap(10),
             MyTextButton(
               onTap: () => goToPush(context, const ElectionsCategory()),
               text: 'Choose Election',

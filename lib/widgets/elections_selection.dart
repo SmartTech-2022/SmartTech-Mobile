@@ -3,7 +3,7 @@ import 'package:onevote/constant/constant.dart';
 import 'package:onevote/screens/candidates.dart';
 import 'package:onevote/screens/election_stats_screen.dart';
 import 'package:onevote/screens/home_screen.dart';
-import 'package:onevote/screens/vote.dart';
+import 'package:onevote/widgets/elections.dart';
 import 'package:onevote/widgets/my_container.dart';
 import 'package:onevote/utils/navigator.dart';
 
@@ -21,7 +21,7 @@ class _ElectionsSelectionState extends State<ElectionsSelection> {
   void _onItemTapped(int index) {
     setState(() {
       if (index == 2) {
-        goToPush(context, const Vote());
+        goToPush(context, const ElectionsCategory());
       } else if (index == 1) {
         goToPush(context, const HomeScreen());
       } else if (index == 0) {

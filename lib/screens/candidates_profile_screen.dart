@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
-import 'package:onevote/screens/sucessful_screen.dart';
+import 'package:onevote/screens/confirm_candidate.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/utils/navigator.dart';
 
@@ -78,7 +78,7 @@ class _CandidatesProfileScreenState extends State<CandidatesProfileScreen> {
       bottomSheet: Padding(
         padding: const EdgeInsets.all(11.0),
         child: MyTextButton(
-          onTap: () => goToPush(context, const SuccessfulScreen()),
+          onTap: () => goToPush(context, const ConfirmCandidateScreen()),
           text: 'Vote Candidate',
           bgcolor: kPrimarycolor,
           fgcolor: kSecondarycolor,

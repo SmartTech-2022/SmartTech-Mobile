@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
-import 'package:onevote/screens/election_stats_screen.dart';
+// import 'package:onevote/screens/election_stats_screen.dart';
 import 'package:onevote/screens/home_screen.dart';
 import 'package:onevote/widgets/bottomnav.dart';
 import 'package:onevote/widgets/my_container.dart';
@@ -18,18 +18,6 @@ class Vote extends StatefulWidget {
 class _VoteState extends State<Vote> {
   final int _selectedid = 2;
   bool hasVoted = true;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      if (index == 2) {
-        goToPush(context, const Vote());
-      } else if (index == 1) {
-        goToPush(context, const HomeScreen());
-      } else if (index == 0) {
-        goToPush(context, const ElectionStatistics());
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {

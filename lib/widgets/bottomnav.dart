@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:onevote/constant/constant.dart';
 import 'package:onevote/screens/election_stats_screen.dart';
 import 'package:onevote/screens/home_screen.dart';
-import 'package:onevote/screens/vote.dart';
 import 'package:onevote/utils/navigator.dart';
+import 'package:onevote/widgets/elections.dart';
 
 class BottomNavBars extends StatefulWidget {
   const BottomNavBars({super.key, required this.selectedid});
@@ -17,7 +17,7 @@ class _BottomNavBarsState extends State<BottomNavBars> {
   void _onItemTapped(int index) {
     setState(() {
       if (index == 2) {
-        goToReplace(context, const Vote());
+        goToReplace(context, const ElectionsCategory());
       } else if (index == 1) {
         goToReplace(context, const HomeScreen());
       } else if (index == 0) {
