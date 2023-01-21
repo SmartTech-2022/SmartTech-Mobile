@@ -26,12 +26,12 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
   Widget build(BuildContext context) {
     var provider = Provider.of<AuthProvider>(context, listen: false);
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        color: kSecondarycolor,
-        padding: EdgeInsets.only(
-            left: 20, right: 20, top: screenHeight(context) * 0.25),
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Container(
+          width: double.infinity,
+          color: kSecondarycolor,
+          padding: EdgeInsets.only(
+              left: 20, right: 20, top: screenHeight(context) * 0.25),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

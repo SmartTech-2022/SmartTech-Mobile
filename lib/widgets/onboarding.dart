@@ -19,7 +19,7 @@ class _OnboardingState extends State<Onboarding> {
     return Container(
       color: kSecondarycolor,
       width: screenWidth * 1,
-      height: screenHeight * 0.7,
+      height: screenHeight * 0.73,
       child: Column(
         children: [
           Expanded(
@@ -71,7 +71,7 @@ class _OnboardingState extends State<Onboarding> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: kBlackcolor,
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: bold,
                         ),
                       ),
