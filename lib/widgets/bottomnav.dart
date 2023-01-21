@@ -3,7 +3,7 @@ import 'package:onevote/constant/constant.dart';
 import 'package:onevote/screens/election_stats_screen.dart';
 import 'package:onevote/screens/home_screen.dart';
 import 'package:onevote/screens/vote.dart';
-import 'package:onevote/widgets/widget.dart';
+import 'package:onevote/utils/navigator.dart';
 
 class BottomNavBars extends StatefulWidget {
   const BottomNavBars({super.key, required this.selectedid});

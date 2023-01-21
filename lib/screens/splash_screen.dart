@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:onevote/constant/constant.dart';
 import 'dart:async';
 import 'package:onevote/screens/onboarding_screen.dart';
-import 'package:onevote/widgets/widget.dart';
+import 'package:onevote/utils/navigator.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
