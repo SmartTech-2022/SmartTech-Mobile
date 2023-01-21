@@ -23,13 +23,19 @@ class User {
   int? id;
   String? name;
   String? email;
+  int? sAdmin;
+  String? voterId;
+  String? image;
 
-  User({this.id, this.name, this.email});
+  User({this.id, this.name, this.email, this.sAdmin, this.voterId, this.image});
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     email = json['email'];
+    sAdmin = json['ís_Admin'];
+    voterId = json['voter_id'];
+    image = json['image'];
   }
 
   Map<String, dynamic> toJson() {
@@ -37,6 +43,9 @@ class User {
     data['id'] = id;
     data['name'] = name;
     data['email'] = email;
+    data['ís_Admin'] = sAdmin;
+    data['voter_id'] = voterId;
+    data['image'] = image;
     return data;
   }
 }

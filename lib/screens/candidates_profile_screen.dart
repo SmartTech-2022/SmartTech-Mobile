@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
-import 'package:onevote/screens/ballot_screen.dart';
-import 'package:onevote/screens/home_screen.dart';
 import 'package:onevote/screens/sucessful_screen.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/utils/navigator.dart';
@@ -67,26 +65,13 @@ class _CandidatesProfileScreenState extends State<CandidatesProfileScreen> {
             ),
             const Gap(10),
             Text(
-                "Atiku Abubakar GCON is a Nigerian politician and businessman who served as the vice president of Nigeria from 1999 to 2007 during the presidency of Olusegun Obasanjo.",
+                "Atiku Abubakar GCON is a Nigerian politician and businessman who served as the vice president of Nigeria from 1999 to 2007 during the presidency of Olusegun Obasanjo.\r\n\r\nAtiku Abubakar GCON is a Nigerian politician and businessman who served as the vice president of Nigeria from 1999 to 2007 during the presidency of Olusegun Obasanjo.",
                 style: TextStyle(
                   fontWeight: fnt500,
                   fontSize: 14.0,
                 ),
                 textAlign: TextAlign.justify),
             const Gap(30),
-            // GestureDetector(
-            //   onTap: () => goToPush(context, const HomeScreen()),
-            //   child: Text(
-            //     "Read More....",
-            //     textAlign: TextAlign.left,
-            //     style: TextStyle(
-            //       color: kPrimarycolor,
-            //       fontSize: 13.0,
-            //       fontWeight: fnt500,
-            //       decoration: TextDecoration.underline,
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ),
