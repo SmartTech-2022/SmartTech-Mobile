@@ -1,10 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
-import 'package:onevote/screens/candidates.dart';
+import 'package:onevote/data/sharedprefs/shared_preference_helper.dart';
 import 'package:onevote/screens/election_stats_screen.dart';
 import 'package:onevote/screens/vote.dart';
-import 'package:onevote/widgets/candidates_list.dart';
 import 'package:onevote/widgets/elections.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/widgets/my_votes.dart';
@@ -18,6 +18,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  var sharedpreference = SharedPreferenceHelper();
+  @override
+  void initState() {
+    SharedPreferenceHelper().getUserString();
+    super.initState();
+  }
+
   final int _selectedIndex = 1;
   bool hasVoted = false;
   void _onItemTapped(int index) {
@@ -34,6 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var shared = sharedpreference.getUserString();
+    //Map map = jsonDecode(shared);
+    print(shared);
     final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: kSecondarycolor,
