@@ -19,7 +19,7 @@ class _OnboardingState extends State<Onboarding> {
     return Container(
       color: kSecondarycolor,
       width: screenWidth * 1,
-      height: screenHeight * 0.7,
+      height: screenHeight * 0.73,
       child: Column(
         children: [
           Expanded(
@@ -41,19 +41,7 @@ class _OnboardingState extends State<Onboarding> {
                         "Elect a Candidate",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: kBlackcolor, fontSize: 40, fontWeight: bold),
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Text(
-                        "Make your vote count with the right vote, \n you can make your voice heard",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: kBlackcolor,
-                          fontSize: 18,
-                          fontWeight: bold,
-                        ),
+                            color: kBlackcolor, fontSize: 30, fontWeight: bold),
                       ),
                     ),
                   ],
@@ -73,7 +61,7 @@ class _OnboardingState extends State<Onboarding> {
                         "Monitor the Elections",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: kBlackcolor, fontSize: 35, fontWeight: bold),
+                            color: kBlackcolor, fontSize: 30, fontWeight: bold),
                       ),
                     ),
                     Container(
@@ -83,7 +71,7 @@ class _OnboardingState extends State<Onboarding> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: kBlackcolor,
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: bold,
                         ),
                       ),
@@ -102,8 +90,8 @@ class _OnboardingState extends State<Onboarding> {
               maxVisibleDots: 5,
               radius: 8,
               spacing: 10,
-              dotHeight: 12,
-              dotWidth: 12,
+              dotHeight: 8,
+              dotWidth: 8,
               dotColor: Colors.grey,
               activeDotColor: kPrimarycolor,
             ),

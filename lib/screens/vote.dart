@@ -42,12 +42,12 @@ class _VoteState extends State<Vote> {
                 },
                 icon: Icon(
                   Icons.arrow_back,
-                  color: kBlackcolor,
+                  color: kPrimarycolor,
                 ),
                 label: Text(
                   "Vote",
                   style: TextStyle(
-                      fontSize: 16.0, color: kBlackcolor, fontWeight: fnt500),
+                      fontSize: 16.0, color: kPrimarycolor, fontWeight: fnt500),
                 )),
             const Gap(20),
             MyContainer(
