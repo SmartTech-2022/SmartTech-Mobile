@@ -74,19 +74,19 @@ class _CandidatesProfileScreenState extends State<CandidatesProfileScreen> {
                 ),
                 textAlign: TextAlign.justify),
             const Gap(30),
-            GestureDetector(
-              onTap: () => goToPush(context, const HomeScreen()),
-              child: Text(
-                "Read More....",
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: kPrimarycolor,
-                  fontSize: 13.0,
-                  fontWeight: fnt500,
-                  decoration: TextDecoration.underline,
-                ),
-              ),
-            ),
+            // GestureDetector(
+            //   onTap: () => goToPush(context, const HomeScreen()),
+            //   child: Text(
+            //     "Read More....",
+            //     textAlign: TextAlign.left,
+            //     style: TextStyle(
+            //       color: kPrimarycolor,
+            //       fontSize: 13.0,
+            //       fontWeight: fnt500,
+            //       decoration: TextDecoration.underline,
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),
