@@ -49,7 +49,7 @@ class _ElectionsSelectionState extends State<ElectionsSelection> {
                     padding: const EdgeInsets.only(bottom: 16.0),
                     child: MyContainer(
                         padding:
-                            const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 20.0),
+                            const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
                         width: double.infinity,
                         alignment: Alignment.center,
                         child: Text(
