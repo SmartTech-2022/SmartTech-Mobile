@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
@@ -41,10 +40,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // var shared = sharedpreference.getUserString();
-    // //Map map = jsonDecode(shared);
-    // print(shared);
+  
      final screenWidth = MediaQuery.of(context).size.width;
+
+    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: kSecondarycolor,
       body: SafeArea(
@@ -189,7 +188,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-            const Gap(45),
           ],
         ),
       )),

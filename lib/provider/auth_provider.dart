@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:onevote/data/endpoints/endpoints.dart';
@@ -49,11 +48,11 @@ class AuthProvider extends ChangeNotifier {
       }
     } on SocketException catch (_) {
       _isLoading = false;
-      _resMessage = "Internet connection is not available`";
+      _resMessage = "Internet connection is not available";
       notifyListeners();
     } catch (e) {
       _isLoading = false;
-      _resMessage = "Please try again`";
+      _resMessage = "Please try again";
       notifyListeners();
     }
     //on SocketException {
