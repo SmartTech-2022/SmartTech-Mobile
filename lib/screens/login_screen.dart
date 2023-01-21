@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
                             }
                           },
                         // text: "Log in",
-                        child: provider.isLoading
+                        child: provider.isLoading==false
                             ? const Text("Log in",style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,

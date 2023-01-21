@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferenceHelper {
-  static const String user = "User";
 
   authToken(String token) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
