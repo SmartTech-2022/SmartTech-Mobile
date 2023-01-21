@@ -11,7 +11,7 @@ class SharedPreferenceHelper {
   }
   userData(String userData) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString("auth_token", jsonEncode(userData));
+    await prefs.setString("user", jsonEncode(userData));
   }
 
   Future<void> setSeenOnboarding() async {

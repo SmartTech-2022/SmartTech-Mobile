@@ -96,11 +96,11 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
                           },
                         // text: "Log in",
                         child: provider.isLoading
-                            ? startCircularProgress(context)
-                            : const Text("Log in",style: TextStyle(
+                            ? const Text("Log in",style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
-                        fontSize: 20.0),),
+                        fontSize: 20.0),)
+                            : startCircularProgress(context),
                       ),
                     ],
                   )),
