@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
+import 'package:onevote/provider/auth_provider.dart';
 import 'package:onevote/screens/home_screen.dart';
+import 'package:onevote/utils/alerts.dart';
+import 'package:onevote/utils/navigator.dart';
 import 'package:onevote/utils/validator.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/widgets/my_text_field.dart';
-import 'package:onevote/utils/navigator.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -21,13 +24,23 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
   bool _obscureText = true;
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AuthProvider>(context, listen: false);
     return Scaffold(
+<<<<<<< HEAD
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
           color: kSecondarycolor,
           padding: EdgeInsets.only(
               left: 20, right: 20, top: screenHeight(context) * 0.25),
+=======
+      body: Container(
+        width: double.infinity,
+        color: kSecondarycolor,
+        padding: EdgeInsets.only(
+            left: 20, right: 20, top: screenHeight(context) * 0.25),
+        child: SingleChildScrollView(
+>>>>>>> 305ba7b521cc02281244713eb45739a2ef6677c1
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -71,12 +84,44 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
                       const Gap(30),
                       MyTextButton(
                         onTap: () {
+<<<<<<< HEAD
                           if (_formKey.currentState!.validate()) {
                             goToReplace(context, const HomeScreen());
+=======
+                          //Future<UserModel?> res;
+                          if (_formKey.currentState!.validate()) {
+                            Map<String, dynamic> data = {
+                              'voter_id': vin.text,
+                              'password': password.text,
+                            };
+                            if (provider.isLoading == true) {
+                              startCircularProgress(context);
+                            } else {
+                              provider.login(data).then((result) {
+                                if (provider.resMessage != '') {
+                                  showAlertDialog(
+                                      context: context,
+                                      title: "Error",
+                                      widget: Text(provider.resMessage));
+                                } else {
+
+                                  goToReplace(context, const HomeScreen());
+                                }
+                              });
+                            }
+                            // provider.isLoading
+                            //     ? startCircularProgress(context)
+                            //     : provider.login(data).then((result) {
+                            //         print(provider.resMessage);
+                            //         // goToReplace(context, const HomeScreen());
+                            //       });
+                            //
+>>>>>>> 305ba7b521cc02281244713eb45739a2ef6677c1
                           }
                         },
                         text: "Log in",
                       ),
+<<<<<<< HEAD
                       const Gap(30),
                       GestureDetector(
                         child: Text(
@@ -84,6 +129,8 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
                           style: TextStyle(color: kPrimarycolor, fontSize: 20),
                         ),
                       ),
+=======
+>>>>>>> 305ba7b521cc02281244713eb45739a2ef6677c1
                     ],
                   )),
             ],
