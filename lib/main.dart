@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onevote/provider/auth_provider.dart';
+import 'package:onevote/screens/home_screen.dart';
 import 'package:onevote/screens/login_screen.dart';
 import 'package:onevote/screens/onboarding_screen.dart';
 import 'package:provider/provider.dart';
@@ -32,9 +33,43 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         useMaterial3: true,
       ),
-      home: isSeen != 1
-          ? const SafeArea(child: OnboardingScreen())
-          : const SafeArea(child: LoginScreen()),
+      home: const CheckAuth(),
     );
+  }
+}
+
+class CheckAuth extends StatefulWidget {
+  const CheckAuth({super.key});
+
+  @override
+  State<CheckAuth> createState() => _CheckAuthState();
+}
+
+class _CheckAuthState extends State<CheckAuth> {
+  bool isAuth = false;
+
+  _isLoggedIn() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var authToken = prefs.getString('auth_token');
+    if (authToken != null) {
+      setState(() => isAuth = true);
+    }
+  }
+
+  @override
+  void initState() {
+    _isLoggedIn();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (isAuth) {
+      return const HomeScreen();
+    } else {
+      return isSeen != 1
+          ? const SafeArea(child: OnboardingScreen())
+          : const SafeArea(child: LoginScreen());
+    }
   }
 }

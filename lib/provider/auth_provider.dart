@@ -27,16 +27,8 @@ class AuthProvider extends ChangeNotifier {
         data = jsonDecode(response.body);
         result = UserModel.fromJson(data);
         _isLoading = false;
-        var mapValue = {
-          'id': result.user!.id,
-          'name': result.user!.name,
-          'email': result.user!.email,
-          'voter_id': result.user!.voterId,
-          'image': result.user!.image,
-          'token': result.token
-        };
-       await SharedPreferenceHelper()
-            .setUserString(userString: mapValue);
+        SharedPreferenceHelper().authToken(data['token']);
+        SharedPreferenceHelper().userData(data['user']);
         // _resMessage = "Login successfull!";
         notifyListeners();
         return result;

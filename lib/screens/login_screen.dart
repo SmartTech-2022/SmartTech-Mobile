@@ -74,17 +74,15 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
                       ),
                       const Gap(30),
                       MyTextButton(
-                        onTap: () {
+                        onTap: () async {
                           //Future<UserModel?> res;
                           if (_formKey.currentState!.validate()) {
                             Map<String, dynamic> data = {
                               'voter_id': vin.text,
                               'password': password.text,
                             };
-                            if (provider.isLoading == true) {
-                              startCircularProgress(context);
-                            } else {
-                              provider.login(data).then((result) {
+                           
+                              await provider.login(data).then((result) {
                                 if (provider.resMessage != '') {
                                   showAlertDialog(
                                       context: context,
@@ -95,16 +93,14 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
                                 }
                               });
                             }
-                            // provider.isLoading
-                            //     ? startCircularProgress(context)
-                            //     : provider.login(data).then((result) {
-                            //         print(provider.resMessage);
-                            //         // goToReplace(context, const HomeScreen());
-                            //       });
-                            //
-                          }
-                        },
-                        text: "Log in",
+                          },
+                        // text: "Log in",
+                        child: provider.isLoading
+                            ? startCircularProgress(context)
+                            : const Text("Log in",style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 20.0),),
                       ),
                     ],
                   )),
