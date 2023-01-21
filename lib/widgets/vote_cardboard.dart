@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:onevote/constant/constant.dart';
 import 'package:onevote/screens/candidates.dart';
 import 'package:onevote/widgets/my_container.dart';
-import 'package:onevote/widgets/widget.dart';
+import 'package:onevote/utils/navigator.dart';
 
 class VoteCardboard extends StatefulWidget {
   const VoteCardboard({super.key});

@@ -3,7 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
 import 'package:onevote/widgets/bottomnav.dart';
 import 'package:onevote/widgets/stats_result_widget.dart';
-import 'package:onevote/widgets/widget.dart';
+import 'package:onevote/utils/navigator.dart';
 
 class StatisticsResult extends StatefulWidget {
   const StatisticsResult({super.key});

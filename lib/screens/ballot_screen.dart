@@ -6,7 +6,7 @@ import 'package:onevote/widgets/elections.dart';
 import 'package:onevote/widgets/my_container.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/widgets/selected_candidate.dart';
-import 'package:onevote/widgets/widget.dart';
+import 'package:onevote/utils/navigator.dart';
 
 class BallotScreen extends StatefulWidget {
   const BallotScreen({super.key});

@@ -3,6 +3,7 @@ import 'package:onevote/constant/constant.dart';
 
 class MyTextField extends StatelessWidget {
   final TextEditingController? controller;
+  final String? Function(String?)? validator;
   final String? hintText;
   final bool? isObscure;
   final IconData? icon;
@@ -10,6 +11,7 @@ class MyTextField extends StatelessWidget {
 
   const MyTextField(
       {this.controller,
+      this.validator,
       this.hintText,
       this.isObscure = false,
       this.icon,
@@ -20,6 +22,7 @@ class MyTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      validator: validator,
       obscureText: isObscure ?? false,
       decoration: InputDecoration(
           suffixIcon: suffixIcon,
@@ -39,8 +42,4 @@ class MyTextField extends StatelessWidget {
               borderSide: BorderSide(color: kPrimarycolor))),
     );
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 48ce57980be408ad670d8274247b3c07133a75fb

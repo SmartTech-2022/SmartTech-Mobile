@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:onevote/constant/constant.dart';
+import 'package:onevote/screens/candidates.dart';
 import 'package:onevote/screens/election_stats_screen.dart';
 import 'package:onevote/screens/home_screen.dart';
 import 'package:onevote/screens/vote.dart';
-import 'package:onevote/widgets/elections_selection.dart';
 import 'package:onevote/widgets/my_container.dart';
 import 'package:onevote/utils/navigator.dart';
 
-class ElectionsCategory extends StatefulWidget {
-  const ElectionsCategory({super.key});
+class ElectionsSelection extends StatefulWidget {
+  const ElectionsSelection({super.key});
 
   @override
-  State<ElectionsCategory> createState() => _ElectionsCategoryState();
+  State<ElectionsSelection> createState() => _ElectionsSelectionState();
 }
 
-class _ElectionsCategoryState extends State<ElectionsCategory> {
+class _ElectionsSelectionState extends State<ElectionsSelection> {
   final int _selectedIndex = 2;
   bool hasVoted = true;
 
@@ -43,7 +43,7 @@ class _ElectionsCategoryState extends State<ElectionsCategory> {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    goToPush(context, const ElectionsSelection());
+                    goToPush(context, const CandidatesScreen());
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
@@ -53,7 +53,7 @@ class _ElectionsCategoryState extends State<ElectionsCategory> {
                         width: double.infinity,
                         alignment: Alignment.center,
                         child: Text(
-                          "INEC ELECTION",
+                          "PRESIDENTIAL ELECTION",
                           style: TextStyle(fontWeight: fnt600),
                         )),
                   ),
