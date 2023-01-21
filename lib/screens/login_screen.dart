@@ -91,7 +91,8 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
                                       title: "Error",
                                       widget: Text(provider.resMessage));
                                 } else {
-
+                                  // VIN=SMTGYD/30660
+                                  // pass= password
                                   goToReplace(context, const HomeScreen());
                                 }
                               });
