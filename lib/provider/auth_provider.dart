@@ -36,8 +36,8 @@ class AuthProvider extends ChangeNotifier {
           'image': result.user!.image,
           'token': result.token
         };
-       await SharedPreferenceHelper()
-            .setUserString(userString: mapValue);
+        SharedPreferenceHelper().authToken(data['token']);
+        SharedPreferenceHelper().userData(data['user']);
         // _resMessage = "Login successfull!";
         notifyListeners();
         return result;

@@ -18,12 +18,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  var sharedpreference = SharedPreferenceHelper();
-  @override
-  void initState() {
-    SharedPreferenceHelper().getUserString();
-    super.initState();
-  }
+  // var sharedpreference = SharedPreferenceHelper();
+  // @override
+  // void initState() {
+  //   SharedPreferenceHelper().getUserString();
+  //   super.initState();
+  // }
 
   final int _selectedIndex = 1;
   bool hasVoted = false;
@@ -41,10 +41,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var shared = sharedpreference.getUserString();
-    //Map map = jsonDecode(shared);
-    print(shared);
-    final screenWidth = MediaQuery.of(context).size.width;
+    // var shared = sharedpreference.getUserString();
+    // //Map map = jsonDecode(shared);
+    // print(shared);
+     final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: kSecondarycolor,
       body: SafeArea(
