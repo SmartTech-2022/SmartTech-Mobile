@@ -26,21 +26,12 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
   Widget build(BuildContext context) {
     var provider = Provider.of<AuthProvider>(context, listen: false);
     return Scaffold(
-<<<<<<< HEAD
-      body: SingleChildScrollView(
-        child: Container(
-          width: double.infinity,
-          color: kSecondarycolor,
-          padding: EdgeInsets.only(
-              left: 20, right: 20, top: screenHeight(context) * 0.25),
-=======
       body: Container(
         width: double.infinity,
         color: kSecondarycolor,
         padding: EdgeInsets.only(
             left: 20, right: 20, top: screenHeight(context) * 0.25),
         child: SingleChildScrollView(
->>>>>>> 305ba7b521cc02281244713eb45739a2ef6677c1
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -84,10 +75,6 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
                       const Gap(30),
                       MyTextButton(
                         onTap: () {
-<<<<<<< HEAD
-                          if (_formKey.currentState!.validate()) {
-                            goToReplace(context, const HomeScreen());
-=======
                           //Future<UserModel?> res;
                           if (_formKey.currentState!.validate()) {
                             Map<String, dynamic> data = {
@@ -104,7 +91,6 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
                                       title: "Error",
                                       widget: Text(provider.resMessage));
                                 } else {
-
                                   goToReplace(context, const HomeScreen());
                                 }
                               });
@@ -116,21 +102,10 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
                             //         // goToReplace(context, const HomeScreen());
                             //       });
                             //
->>>>>>> 305ba7b521cc02281244713eb45739a2ef6677c1
                           }
                         },
                         text: "Log in",
                       ),
-<<<<<<< HEAD
-                      const Gap(30),
-                      GestureDetector(
-                        child: Text(
-                          "Forgot Password?",
-                          style: TextStyle(color: kPrimarycolor, fontSize: 20),
-                        ),
-                      ),
-=======
->>>>>>> 305ba7b521cc02281244713eb45739a2ef6677c1
                     ],
                   )),
             ],

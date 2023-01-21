@@ -90,13 +90,8 @@ class _OnboardingState extends State<Onboarding> {
               maxVisibleDots: 5,
               radius: 8,
               spacing: 10,
-<<<<<<< HEAD
-              dotHeight: 8,
-              dotWidth: 8,
-=======
               dotHeight: 9,
               dotWidth: 9,
->>>>>>> 305ba7b521cc02281244713eb45739a2ef6677c1
               dotColor: Colors.grey,
               activeDotColor: kPrimarycolor,
             ),
