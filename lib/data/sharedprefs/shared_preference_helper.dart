@@ -25,7 +25,7 @@ class SharedPreferenceHelper extends ChangeNotifier {
   Future<String> getUserData() async {
     SharedPreferences value = await _prefs;
 
-    if (value.containsKey('use')) {
+    if (value.containsKey('user')) {
       String data = value.getString('user')!;
       _userData = data;
       notifyListeners();

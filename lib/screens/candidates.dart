@@ -67,7 +67,7 @@ class _CandidatesScreenState extends State<CandidatesScreen> {
               ),
             ),
             const Gap(10.0),
-            const Expanded(child: CandidateList()),
+            const Expanded(child: CandidateList(catId: 1,)),
           ],
         ),
       ),
