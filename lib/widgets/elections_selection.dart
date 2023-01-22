@@ -43,7 +43,7 @@ class _ElectionsSelectionState extends State<ElectionsSelection> {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    goToPush(context, const CandidatesScreen());
+                    goToPush(context, const CandidatesScreen(catId: 2,));
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),

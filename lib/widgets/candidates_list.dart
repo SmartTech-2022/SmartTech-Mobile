@@ -25,7 +25,7 @@ class _CandidateListState extends State<CandidateList> {
             if (snapshot.hasError) {
               return const Center(child: Text('Error Occured'));
             } else if (snapshot.hasData) {
-              if (snapshot.data!.data == null) {
+              if (snapshot.data!.data!.contestant == null) {
                 return Center(
                     child: Text(
                   'No Candidates',
@@ -38,6 +38,7 @@ class _CandidateListState extends State<CandidateList> {
                     itemCount: snapshot.data!.data!.contestant!.length,
                     itemBuilder: (context, index) {
                       final data = snapshot.data!.data!.contestant![index];
+                      print(data);
                       return GestureDetector(
                         onTap: () =>
                             goToPush(context, const CandidatesProfileScreen()),
@@ -84,8 +85,8 @@ class _CandidateListState extends State<CandidateList> {
                                         ),
                                       ),
                                       Text(
-                                        data.about!
-                                        , style: TextStyle(
+                                        data.about!,
+                                        style: TextStyle(
                                             color: kBlackcolor,
                                             fontWeight: fnt400,
                                             fontSize: 12.0),
@@ -103,11 +104,11 @@ class _CandidateListState extends State<CandidateList> {
                 );
               }
             } else {
-               return Center(
-                    child: CircularProgressIndicator(
-                      color: kPrimarycolor,
-                    ),
-                  );
+              return Center(
+                child: CircularProgressIndicator(
+                  color: kPrimarycolor,
+                ),
+              );
             }
           }),
     );

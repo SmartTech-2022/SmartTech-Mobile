@@ -17,11 +17,11 @@ class ElectionProvider extends ChangeNotifier {
     try {
       final request = await http.get(Uri.parse(uri), headers: {
         HttpHeaders.contentTypeHeader: "application/json",
-        HttpHeaders.authorizationHeader: "Bearer 100|Gdbl7WigK5PQKRRLstk23Yl7XssCMcvfLcIsh7Bp",
+        HttpHeaders.authorizationHeader: "Bearer 100|Gdbl7WigK5PQKRRLstk23Yl7XssCMcvfLcIsh7Bp",//
         HttpHeaders.acceptHeader: "application/json",
       });
 
-      print(userId);
+      print(token);
 
       if (request.statusCode == 200 || request.statusCode == 201){
 
