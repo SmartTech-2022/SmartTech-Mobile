@@ -27,9 +27,10 @@ class AuthProvider extends ChangeNotifier {
         data = jsonDecode(response.body);
         result = UserModel.fromJson(data);
         _isLoading = false;
+        
         SharedPreferenceHelper().user(data['user']);
         SharedPreferenceHelper().authToken(data['token']);
-        
+
         // _resMessage = "Login successfull!";
         notifyListeners();
         return result;

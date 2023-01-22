@@ -65,7 +65,7 @@ class _CandidatesProfileScreenState extends State<CandidatesProfileScreen> {
             ),
             const Gap(10),
             Text(
-                "Atiku Abubakar GCON is a Nigerian politician and businessman who served as the vice president of Nigeria from 1999 to 2007 during the presidency of Olusegun Obasanjo.\r\n\r\nAtiku Abubakar GCON is a Nigerian politician and businessman who served as the vice president of Nigeria from 1999 to 2007 during the presidency of Olusegun Obasanjo.",
+                "Atiku Abubakar GCON is a Nigerian politician and businessman who served as the vice president of Nigeria from 1999 to 2007 during the presidency of Olusegun Obasanjo.",
                 style: TextStyle(
                   fontWeight: fnt500,
                   fontSize: 14.0,
