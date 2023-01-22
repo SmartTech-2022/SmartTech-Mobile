@@ -4,7 +4,6 @@ import 'package:onevote/constant/constant.dart';
 import 'package:onevote/models/election_candidates_model.dart';
 import 'package:onevote/provider/candidate_list_provider.dart';
 import 'package:onevote/screens/candidates_profile_screen.dart';
-import 'package:onevote/utils/alerts.dart';
 import 'package:onevote/widgets/my_container.dart';
 import 'package:onevote/utils/navigator.dart';
 
@@ -21,12 +20,12 @@ class _CandidateListState extends State<CandidateList> {
     return Container(
       clipBehavior: Clip.none,
       child: FutureBuilder<ElectionCandidatesModel>(
-          future: CandidateListProvider().getCandidateList(2),
+          future: CandidateListProvider().getCandidateList(widget.catId),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return const Center(child: Text('Error Occured'));
             } else if (snapshot.hasData) {
-              if (snapshot.data!.data == null) {
+              if (snapshot.data!.data!.contestant == null) {
                 return Center(
                     child: Text(
                   'No Candidates',
@@ -39,6 +38,7 @@ class _CandidateListState extends State<CandidateList> {
                     itemCount: snapshot.data!.data!.contestant!.length,
                     itemBuilder: (context, index) {
                       final data = snapshot.data!.data!.contestant![index];
+                      print(data);
                       return GestureDetector(
                         onTap: () =>
                             goToPush(context, const CandidatesProfileScreen()),
@@ -85,8 +85,8 @@ class _CandidateListState extends State<CandidateList> {
                                         ),
                                       ),
                                       Text(
-                                        data.about!
-                                        , style: TextStyle(
+                                        data.about!,
+                                        style: TextStyle(
                                             color: kBlackcolor,
                                             fontWeight: fnt400,
                                             fontSize: 12.0),
@@ -104,11 +104,11 @@ class _CandidateListState extends State<CandidateList> {
                 );
               }
             } else {
-               return Center(
-                    child: CircularProgressIndicator(
-                      color: kPrimarycolor,
-                    ),
-                  );
+              return Center(
+                child: CircularProgressIndicator(
+                  color: kPrimarycolor,
+                ),
+              );
             }
           }),
     );
