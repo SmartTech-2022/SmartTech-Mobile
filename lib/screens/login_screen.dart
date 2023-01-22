@@ -75,32 +75,33 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
                       const Gap(30),
                       MyTextButton(
                         onTap: () async {
-                          //Future<UserModel?> res;
                           if (_formKey.currentState!.validate()) {
                             Map<String, dynamic> data = {
                               'voter_id': vin.text,
                               'password': password.text,
                             };
-                           
-                              await provider.login(data).then((result) {
-                                if (provider.resMessage != '') {
-                                  showAlertDialog(
-                                      context: context,
-                                      title: "Error",
-                                      widget: Text(provider.resMessage));
-                                } else {
-                                  goToReplace(context, const HomeScreen());
-                                }
-                              });
-                            }
-                          },
-                        // text: "Log in",
-                        child: provider.isLoading==false
-                            ? const Text("Log in",style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20.0),)
-                            : startCircularProgress(context),
+
+                            await provider.login(data).then((result) {
+                              if (provider.resMessage != '') {
+                                showAlertDialog(
+                                    context: context,
+                                    title: "Error",
+                                    widget: Text(provider.resMessage));
+                              } else {
+                                goToReplace(context, const HomeScreen());
+                              }
+                            });
+                          }
+                        },
+                        child: provider.isLoading == true
+                            ? startCircularProgress(context)
+                            : const Text(
+                                "Log in",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 20.0),
+                              ),
                       ),
                     ],
                   )),
