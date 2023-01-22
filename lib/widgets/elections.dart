@@ -60,7 +60,7 @@ class _ElectionsCategoryState extends State<ElectionsCategory> {
                           final data = snapshot.data!.data![index];
                           return GestureDetector(
                             onTap: () {
-                              goToPush(context, CandidatesScreen(catId: data.id!,));
+                              goToPush(context, CandidatesScreen(catId: data.id!,catName: data.name!,));
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(bottom: 16.0),

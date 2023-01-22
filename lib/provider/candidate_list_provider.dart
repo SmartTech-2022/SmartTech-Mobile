@@ -12,18 +12,15 @@ class CandidateListProvider extends ChangeNotifier {
   String get resTitle => _resTitle;
   Future<ElectionCandidatesModel> getCandidateList(int id) async {
     final uri = '${EndPoints.baseUrl}${EndPoints.elections}/$id';
-    print(uri);
-    final userId = await SharedPreferenceHelper().getUserData();
-    final token = await SharedPreferenceHelper().getToken();
+    final token = jsonDecode(await SharedPreferenceHelper().getToken());
 
     try {
       final request = await http.get(Uri.parse(uri), headers: {
         HttpHeaders.contentTypeHeader: "application/json",
-        HttpHeaders.authorizationHeader: "Bearer $token",
+        HttpHeaders.authorizationHeader:
+            "Bearer $token",
         HttpHeaders.acceptHeader: "application/json",
       });
-
-      //print(userId);
 
       if (request.statusCode == 200 || request.statusCode == 201) {
         if (json.decode(request.body)['data'] == null) {
@@ -31,7 +28,6 @@ class CandidateListProvider extends ChangeNotifier {
         } else {
           final electionModel = electionCandidatesModelFromJson(request.body);
           _resTitle = electionModel.data!.name!;
-          notifyListeners();
           return electionModel;
         }
       } else {
