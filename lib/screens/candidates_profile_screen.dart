@@ -6,8 +6,8 @@ import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/utils/navigator.dart';
 
 class CandidatesProfileScreen extends StatefulWidget {
-  const CandidatesProfileScreen({super.key});
-
+  const CandidatesProfileScreen({required this.candidateId, super.key});
+  final int candidateId;
   @override
   State<CandidatesProfileScreen> createState() =>
       _CandidatesProfileScreenState();

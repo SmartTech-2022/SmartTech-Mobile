@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
+import 'package:onevote/data/sharedprefs/shared_preference_helper.dart';
 import 'package:onevote/screens/election_stats_screen.dart';
 import 'package:onevote/screens/vote.dart';
 import 'package:onevote/widgets/elections.dart';
@@ -16,7 +17,18 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+ 
 
+  @override
+  void initState() {
+    getUser();
+    super.initState();
+  }
+ getUser() async {
+    final userId = await SharedPreferenceHelper().getUserData();
+    return userId;
+  }
+ 
   final int _selectedIndex = 1;
   bool hasVoted = false;
   void _onItemTapped(int index) {
@@ -33,8 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-  
-     final screenWidth = MediaQuery.of(context).size.width;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: kSecondarycolor,
       body: SafeArea(

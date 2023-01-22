@@ -11,17 +11,15 @@ class ElectionProvider extends ChangeNotifier {
   final uri = EndPoints.baseUrl + EndPoints.elections;
 
   Future<ElectionModel> getElections() async {
-    final userId = await SharedPreferenceHelper().getUserData();
-    final token = await SharedPreferenceHelper().getToken();
+    final token = jsonDecode(await SharedPreferenceHelper().getToken());
 
     try {
       final request = await http.get(Uri.parse(uri), headers: {
         HttpHeaders.contentTypeHeader: "application/json",
-        HttpHeaders.authorizationHeader: "Bearer 100|Gdbl7WigK5PQKRRLstk23Yl7XssCMcvfLcIsh7Bp",//
+        HttpHeaders.authorizationHeader: "Bearer $token",//
         HttpHeaders.acceptHeader: "application/json",
       });
 
-      print(token);
 
       if (request.statusCode == 200 || request.statusCode == 201){
 

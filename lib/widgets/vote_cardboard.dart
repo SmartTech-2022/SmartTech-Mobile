@@ -23,7 +23,7 @@ class _VoteCardboardState extends State<VoteCardboard> {
             padding: const EdgeInsets.only(bottom: 16.0),
             child: GestureDetector(
               onTap: () {
-                goToPush(context, const CandidatesScreen(catId: 2,));
+                goToPush(context, const CandidatesScreen(catId: 2,catName: "hello",));
               },
               child: MyContainer(
                 padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 20.0),

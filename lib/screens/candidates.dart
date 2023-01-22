@@ -4,15 +4,16 @@ import 'package:onevote/constant/constant.dart';
 import 'package:onevote/models/election_candidates_model.dart';
 import 'package:onevote/provider/candidate_list_provider.dart';
 import 'package:onevote/screens/candidates_profile_screen.dart';
-//import 'package:onevote/screens/home_screen.dart';
-import 'package:onevote/widgets/candidates_list.dart';
-import 'package:onevote/widgets/my_container.dart';
 import 'package:onevote/utils/navigator.dart';
-import 'package:provider/provider.dart';
+//import 'package:onevote/screens/home_screen.dart';
+//import 'package:onevote/widgets/candidates_list.dart';
+import 'package:onevote/widgets/my_container.dart';
 
 class CandidatesScreen extends StatefulWidget {
-  const CandidatesScreen({required this.catId, super.key});
+  const CandidatesScreen(
+      {required this.catId, required this.catName, super.key});
   final int catId;
+  final String catName;
   @override
   State<CandidatesScreen> createState() => _CandidatesScreenState();
 }
@@ -33,7 +34,6 @@ class _CandidatesScreenState extends State<CandidatesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final result = Provider.of<CandidateListProvider>(context);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(left: 8.0, right: 8.0),
@@ -51,7 +51,7 @@ class _CandidatesScreenState extends State<CandidatesScreen> {
                   color: kPrimarycolor,
                 ),
                 label: Text(
-                  result.resTitle,
+                  widget.catName.toUpperCase(),
                   style: TextStyle(
                       fontSize: 16.0, color: kPrimarycolor, fontWeight: fnt500),
                 )),
@@ -80,7 +80,7 @@ class _CandidatesScreenState extends State<CandidatesScreen> {
                     if (snapshot.hasError) {
                       return const Center(child: Text('Error Occured'));
                     } else if (snapshot.hasData) {
-                      if (snapshot.data!.data!.contestant == null) {
+                      if (snapshot.data == null) {
                         return Center(
                             child: Text(
                           'No Candidates',
@@ -90,13 +90,15 @@ class _CandidatesScreenState extends State<CandidatesScreen> {
                         return Container(
                           clipBehavior: Clip.none,
                           child: ListView.builder(
-                            itemCount: snapshot.data!.data!.contestant!.length,
+                            itemCount: snapshot.data?.data?.contestants?.length,
                             itemBuilder: (context, index) {
                               final data =
-                                  snapshot.data!.data!.contestant![index];
+                                  snapshot.data?.data?.contestants?[index];
                               return GestureDetector(
                                 onTap: () => goToPush(
-                                    context, const CandidatesProfileScreen()),
+                                    context,
+                                    CandidatesProfileScreen(
+                                        candidateId: data.id!)),
                                 child: MyContainer(
                                   padding: const EdgeInsets.fromLTRB(
                                       10.0, 10.0, 10.0, 20.0),
@@ -136,7 +138,7 @@ class _CandidatesScreenState extends State<CandidatesScreen> {
                                                 padding: const EdgeInsets.only(
                                                     top: 8.0),
                                                 child: Text(
-                                                  data.name!,
+                                                  data!.name!,
                                                   style: TextStyle(
                                                       color: kBlackcolor,
                                                       fontWeight: fnt400,
