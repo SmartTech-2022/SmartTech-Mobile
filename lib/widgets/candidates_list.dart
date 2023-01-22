@@ -62,9 +62,9 @@ class _CandidateListState extends State<CandidateList> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  const CircleAvatar(
+                                   CircleAvatar(
                                     backgroundImage: AssetImage(
-                                        "assets/images/atikusmall.png"),
+                                        data.image==null?"assets/images/atikusmall.png":data.image!),
                                     radius: 30.0,
                                   ),
                                   const Gap(10.0),
