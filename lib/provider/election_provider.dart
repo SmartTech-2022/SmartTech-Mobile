@@ -17,7 +17,7 @@ class ElectionProvider extends ChangeNotifier {
     try {
       final request = await http.get(Uri.parse(uri), headers: {
         HttpHeaders.contentTypeHeader: "application/json",
-        HttpHeaders.authorizationHeader: "Bearer $token",
+        'Authorization': "Bearer $token",
         HttpHeaders.acceptHeader: "application/json",
       });
 
