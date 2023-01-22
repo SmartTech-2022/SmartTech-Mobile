@@ -4,7 +4,6 @@ import 'package:onevote/constant/constant.dart';
 import 'package:onevote/models/election_candidates_model.dart';
 import 'package:onevote/provider/candidate_list_provider.dart';
 import 'package:onevote/screens/candidates_profile_screen.dart';
-import 'package:onevote/utils/alerts.dart';
 import 'package:onevote/widgets/my_container.dart';
 import 'package:onevote/utils/navigator.dart';
 
@@ -21,7 +20,7 @@ class _CandidateListState extends State<CandidateList> {
     return Container(
       clipBehavior: Clip.none,
       child: FutureBuilder<ElectionCandidatesModel>(
-          future: CandidateListProvider().getCandidateList(2),
+          future: CandidateListProvider().getCandidateList(widget.catId),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return const Center(child: Text('Error Occured'));
