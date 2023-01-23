@@ -3,7 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
+import 'package:onevote/data/sharedprefs/shared_preference_helper.dart';
 import 'package:onevote/screens/election_stats_screen.dart';
+import 'package:onevote/screens/login_screen.dart';
 import 'package:onevote/screens/vote.dart';
 import 'package:onevote/utils/navigator.dart';
 import 'package:onevote/widgets/elections.dart';
@@ -21,6 +23,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   var userValue;
   var userName;
+  var userEmail;
+  var userImage;
 
   @override
   void initState() {
@@ -73,47 +77,45 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Row(
                         children: [
-                          Image.asset("assets/images/mappin.png"),
+                          Icon(Icons.email_outlined),
+                          Gap(10),
                           Text(
-                            "Asaba, Delta",
+                            userEmail ?? "voter@onevote.com",
                             style: TextStyle(color: kBlackcolor, fontSize: 14),
                           ),
                         ],
                       ),
                     ],
                   ),
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: kimageplaceholder,
-                    ),
-                    child: Icon(
-                      Icons.person,
-                      color: kBlackcolor,
-                      size: 29.0,
-                    ),
-                  )
+                  GestureDetector(
+                      child: userImage == null
+                          ? Container(
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: kimageplaceholder,
+                              ),
+                              child: Icon(Icons.person),
+                            )
+                          : Container(
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: kimageplaceholder,
+                              ),
+                              child:
+                                  CircleAvatar(child: Image.network(userImage)),
+                            ),
+                      onTap: () {
+                        SharedPreferenceHelper().removeUser();
+                        goToReplace(context, const LoginScreen());
+                      })
                 ],
               ),
             ),
             const Gap(20),
-            GestureDetector(
-              onTap: () => goToPush(context, const Vote()),
-              child: Container(
-                width: double.infinity,
-                height: 50.0,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: kPrimarycolorlight,
-                  ),
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-              ),
-            ),
-            const Gap(10),
             MyTextButton(
               onTap: () => goToPush(context, const ElectionsCategory()),
               text: 'Choose Election',
@@ -223,6 +225,8 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() {
         userGrup.add(userDecoded[0]);
         userName = userDecoded['name'];
+        userEmail = userDecoded['email'];
+        userImage = userDecoded['image'];
       });
     }
     //Map userValue = jsonDecode(await SharedPreferenceHelper().getUserData());

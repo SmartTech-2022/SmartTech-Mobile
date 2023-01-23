@@ -1,10 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:onevote/screens/login_screen.dart';
+import 'package:onevote/utils/navigator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferenceHelper extends ChangeNotifier {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-    String _userData = '';
+  String _userData = '';
   String get userData => _userData;
   String _token = '';
   String get token => _token;
@@ -12,6 +14,7 @@ class SharedPreferenceHelper extends ChangeNotifier {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString("auth_token", jsonEncode(token));
   }
+
   user(String userData) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString("user", userData);
@@ -22,6 +25,7 @@ class SharedPreferenceHelper extends ChangeNotifier {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setInt('onBoarding', isSeen);
   }
+
   Future<String> getUserData() async {
     SharedPreferences value = await _prefs;
 
@@ -36,6 +40,7 @@ class SharedPreferenceHelper extends ChangeNotifier {
       return '';
     }
   }
+
   Future<String> getToken() async {
     SharedPreferences value = await _prefs;
 
@@ -49,5 +54,12 @@ class SharedPreferenceHelper extends ChangeNotifier {
       notifyListeners();
       return '';
     }
+  }
+
+  void removeUser() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.remove("auth_token");
+    pref.remove("user");
+    
   }
 }
