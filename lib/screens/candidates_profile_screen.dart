@@ -4,10 +4,21 @@ import 'package:onevote/constant/constant.dart';
 import 'package:onevote/screens/confirm_candidate.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/utils/navigator.dart';
+import 'package:onevote/widgets/my_text_button.dart';
 
 class CandidatesProfileScreen extends StatefulWidget {
-  const CandidatesProfileScreen({super.key});
-
+  const CandidatesProfileScreen(
+      {required this.candidateId,
+      required this.candidateName,
+      required this.image,
+      required this.partyLogo,
+      required this.candidateAbout,
+      super.key});
+  final int candidateId;
+  final String candidateName;
+  final String image;
+  final String partyLogo;
+  final String candidateAbout;
   @override
   State<CandidatesProfileScreen> createState() =>
       _CandidatesProfileScreenState();
@@ -33,7 +44,7 @@ class _CandidatesProfileScreenState extends State<CandidatesProfileScreen> {
                   color: kPrimarycolor,
                 ),
                 label: Text(
-                  "ATIKU ABUBAKAR",
+                  widget.candidateName.toUpperCase(),
                   style: TextStyle(
                       fontSize: 16.0, color: kPrimarycolor, fontWeight: fnt500),
                 )),
@@ -43,8 +54,8 @@ class _CandidatesProfileScreenState extends State<CandidatesProfileScreen> {
               height: screenHeight(context) * 0.35,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.0),
-                image: const DecorationImage(
-                  image: AssetImage("assets/images/atiku1.png"),
+                image:  DecorationImage(
+                  image: NetworkImage(widget.image),
                   fit: BoxFit.fitWidth,
                 ),
               ),
@@ -54,18 +65,18 @@ class _CandidatesProfileScreenState extends State<CandidatesProfileScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "ATIKU ABUBAKAR",
+                 widget.candidateName,
                   style: TextStyle(fontWeight: fnt700, fontSize: 16.0),
                 ),
-                const CircleAvatar(
-                  backgroundImage: AssetImage("assets/images/pdp.png"),
+                 CircleAvatar(
+                  backgroundImage: NetworkImage(widget.partyLogo),
                   radius: 25.0,
                 ),
               ],
             ),
             const Gap(10),
             Text(
-                "Atiku Abubakar GCON is a Nigerian politician and businessman who served as the vice president of Nigeria from 1999 to 2007 during the presidency of Olusegun Obasanjo.\r\n\r\nAtiku Abubakar GCON is a Nigerian politician and businessman who served as the vice president of Nigeria from 1999 to 2007 during the presidency of Olusegun Obasanjo.",
+                widget.candidateAbout,
                 style: TextStyle(
                   fontWeight: fnt500,
                   fontSize: 14.0,

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
@@ -8,6 +10,7 @@ import 'package:onevote/widgets/elections.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/widgets/my_votes.dart';
 import 'package:onevote/utils/navigator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,12 +20,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // var sharedpreference = SharedPreferenceHelper();
-  // @override
-  // void initState() {
-  //   SharedPreferenceHelper().getUserString();
-  //   super.initState();
-  // }
+  var userValue;
+  var userName;
+
+  @override
+  void initState() {
+    super.initState();
+    getUser();
+  }
 
   final int _selectedIndex = 1;
   bool hasVoted = false;
@@ -185,5 +190,23 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: _onItemTapped,
       ),
     );
+  }
+
+  void getUser() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    userValue = pref.getString("user");
+    var userGrup = [];
+
+    if (userValue != null) {
+      // decode json string if found
+      var userDecoded = json.decode(userValue);
+
+      setState(() {
+        userGrup.add(userDecoded[0]);
+        userName =userDecoded['name'];
+      });
+    }
+    //Map userValue = jsonDecode(await SharedPreferenceHelper().getUserData());
+    ;
   }
 }
