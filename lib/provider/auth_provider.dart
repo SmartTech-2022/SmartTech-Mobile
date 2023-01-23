@@ -27,7 +27,7 @@ class AuthProvider extends ChangeNotifier {
         data = jsonDecode(response.body);
         result = UserModel.fromJson(data);
         _isLoading = false;
-        User map= User.fromJson(data['user']);
+        User map= data['user'];
         SharedPreferenceHelper().user(jsonEncode(map));
         SharedPreferenceHelper().authToken(data['token']);
 
