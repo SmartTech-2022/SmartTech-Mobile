@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:onevote/constant/constant.dart';
+import 'package:onevote/models/elections_model.dart';
+import 'package:onevote/provider/election_provider.dart';
+import 'package:onevote/screens/candidates.dart';
 import 'package:onevote/screens/election_stats_screen.dart';
 import 'package:onevote/screens/home_screen.dart';
 import 'package:onevote/widgets/elections_selection.dart';
@@ -33,7 +36,7 @@ class _ElectionsCategoryState extends State<ElectionsCategory> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
+        child: Container(
           padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 60.0),
           child: Container(
             clipBehavior: Clip.none,

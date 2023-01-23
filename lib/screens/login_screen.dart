@@ -75,7 +75,6 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
                       const Gap(30),
                       MyTextButton(
                         onTap: () async {
-                          //Future<UserModel?> res;
                           if (_formKey.currentState!.validate()) {
                             Map<String, dynamic> data = {
                               'voter_id': vin.text,
@@ -94,8 +93,7 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
                             });
                           }
                         },
-                        // text: "Log in",
-                        child: provider.isLoading
+                        child: provider.isLoading == true
                             ? startCircularProgress(context)
                             : const Text(
                                 "Log in",

@@ -17,13 +17,18 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // var sharedpreference = SharedPreferenceHelper();
-  // @override
-  // void initState() {
-  //   SharedPreferenceHelper().getUserString();
-  //   super.initState();
-  // }
+ 
 
+  @override
+  void initState() {
+    getUser();
+    super.initState();
+  }
+ getUser() async {
+    final userId = await SharedPreferenceHelper().getUserData();
+    return userId;
+  }
+ 
   final int _selectedIndex = 1;
   bool hasVoted = false;
   void _onItemTapped(int index) {
