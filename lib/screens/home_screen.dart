@@ -1,13 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
-import 'package:onevote/data/sharedprefs/shared_preference_helper.dart';
+import 'package:onevote/models/auth_model.dart';
 import 'package:onevote/screens/election_stats_screen.dart';
 import 'package:onevote/screens/vote.dart';
 import 'package:onevote/widgets/elections.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/widgets/my_votes.dart';
 import 'package:onevote/utils/navigator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,18 +20,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
- 
+  var userValue;
+  var userName;
 
   @override
   void initState() {
-    getUser();
     super.initState();
+    getUser();
   }
- getUser() async {
-    final userId = await SharedPreferenceHelper().getUserData();
-    return userId;
-  }
- 
+
   final int _selectedIndex = 1;
   bool hasVoted = false;
   void _onItemTapped(int index) {
@@ -45,6 +45,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ;
+    //var userDecoded = json.decode(userValue!);
+    //print(userDecoded);
     final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: kSecondarycolor,
@@ -55,41 +58,46 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Gap(screenHeight(context) * 0.08),
-            Row(
-              children: [
-                Column(
-                  children: [
-                    Text(
-                      "Hello Jeff,",
-                      style: TextStyle(
-                          color: kBlackcolor, fontSize: 20, fontWeight: bold),
-                    ),
-                    Row(
-                      children: [
-                        Image.asset("assets/images/mappin.png"),
-                        Text(
-                          "Asaba, Delta",
-                          style: TextStyle(color: kBlackcolor, fontSize: 14),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Gap(screenHeight(context) * 0.26),
-                Container(
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: kimageplaceholder,
+            Container(
+              width: screenWidth *1,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Hello $userName",
+                        style: TextStyle(
+                            color: kBlackcolor, fontSize: 20, fontWeight: bold),
+                      ),
+                      Row(
+                        children: [
+                          Image.asset("assets/images/mappin.png"),
+                          Text(
+                            "Asaba, Delta",
+                            style: TextStyle(color: kBlackcolor, fontSize: 14),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                  child: Icon(
-                    Icons.person,
-                    color: kBlackcolor,
-                    size: 29.0,
-                  ),
-                )
-              ],
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: kimageplaceholder,
+                    ),
+                    child: Icon(
+                      Icons.person,
+                      color: kBlackcolor,
+                      size: 29.0,
+                    ),
+                  )
+                ],
+              ),
             ),
             const Gap(20),
             GestureDetector(
@@ -214,5 +222,23 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: _onItemTapped,
       ),
     );
+  }
+
+  void getUser() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    userValue = pref.getString("user");
+    var userGrup = [];
+
+    if (userValue != null) {
+      // decode json string if found
+      var userDecoded = json.decode(userValue);
+
+      setState(() {
+        userGrup.add(userDecoded[0]);
+        userName =userDecoded['name'];
+      });
+    }
+    //Map userValue = jsonDecode(await SharedPreferenceHelper().getUserData());
+    ;
   }
 }

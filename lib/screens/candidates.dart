@@ -80,7 +80,7 @@ class _CandidatesScreenState extends State<CandidatesScreen> {
                     if (snapshot.hasError) {
                       return const Center(child: Text('Error Occured'));
                     } else if (snapshot.hasData) {
-                      if (snapshot.data == null) {
+                      if (snapshot.data?.data?.contestants == null) {
                         return Center(
                             child: Text(
                           'No Candidates',
@@ -98,7 +98,12 @@ class _CandidatesScreenState extends State<CandidatesScreen> {
                                 onTap: () => goToPush(
                                     context,
                                     CandidatesProfileScreen(
-                                        candidateId: data.id!)),
+                                      candidateId: data.id!,
+                                      candidateName: data.name!,
+                                      partyLogo: data.partyLogo?? "https://inecnigeria.org/wp-content/uploads/2019/01/inec-logo-big-e1548855552200.jpg",
+                                      image: data.image??"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png",
+                                      candidateAbout: data.about!,
+                                    )),
                                 child: MyContainer(
                                   padding: const EdgeInsets.fromLTRB(
                                       10.0, 10.0, 10.0, 20.0),
