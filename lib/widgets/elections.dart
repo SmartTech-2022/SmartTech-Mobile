@@ -6,7 +6,6 @@ import 'package:onevote/screens/election_stats_screen.dart';
 import 'package:onevote/screens/home_screen.dart';
 import 'package:onevote/screens/vote.dart';
 import 'package:onevote/widgets/candidates_list.dart';
-import 'package:onevote/widgets/elections_selection.dart';
 import 'package:onevote/widgets/my_container.dart';
 import 'package:onevote/utils/navigator.dart';
 
