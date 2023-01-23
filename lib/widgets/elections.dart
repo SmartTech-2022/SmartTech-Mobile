@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:onevote/constant/constant.dart';
-import 'package:onevote/models/elections_model.dart';
-import 'package:onevote/provider/election_provider.dart';
-import 'package:onevote/screens/candidates.dart';
 import 'package:onevote/screens/election_stats_screen.dart';
 import 'package:onevote/screens/home_screen.dart';
 import 'package:onevote/widgets/elections_selection.dart';

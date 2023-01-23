@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
 import 'package:onevote/widgets/bottomnav.dart';
-import 'package:onevote/widgets/candidates_list.dart';
 import 'package:onevote/widgets/my_container.dart';
 import 'package:onevote/models/election_candidates_model.dart';
 import 'package:onevote/provider/candidate_list_provider.dart';

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
+import 'package:onevote/data/sharedprefs/user_prefrence.dart';
+import 'package:onevote/screens/login_screen.dart';
+import 'package:onevote/utils/navigator.dart';
 // import 'package:onevote/utils/navigator.dart';
 // import 'package:onevote/screens/home_screen.dart';
 
@@ -42,30 +45,7 @@ class DrawerWidgt extends StatelessWidget {
             ),
             onTap: () {},
           ),
-          Gap(screenHeight(context) * 0.20),
-          ListTile(
-            title: Text(
-              'About Us',
-              style: TextStyle(
-                color: kSecondarycolor,
-                fontSize: 16,
-                fontWeight: fnt600,
-              ),
-            ),
-            onTap: () {},
-          ),
-          ListTile(
-            title: Text(
-              'FAQs',
-              style: TextStyle(
-                color: kSecondarycolor,
-                fontSize: 16,
-                fontWeight: fnt600,
-              ),
-            ),
-            onTap: () {},
-          ),
-          Gap(screenHeight(context) * 0.20),
+          Gap(screenHeight(context) * 0.12),
           ListTile(
             title: Text(
               'Sign Out',
@@ -75,7 +55,10 @@ class DrawerWidgt extends StatelessWidget {
                 fontWeight: fnt600,
               ),
             ),
-            onTap: () {},
+            onTap: () {
+               UserPreference().removeUser();
+              goToReplace(context, const LoginScreen());
+            },
           ),
         ],
       ),

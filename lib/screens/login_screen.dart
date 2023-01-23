@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
-import 'package:onevote/provider/auth_provider.dart';
+import 'package:onevote/models/user_model.dart';
+import 'package:onevote/provider/auth_provider2.dart';
+import 'package:onevote/provider/user_provider.dart';
 import 'package:onevote/screens/home_screen.dart';
 import 'package:onevote/utils/alerts.dart';
-import 'package:onevote/utils/navigator.dart';
 import 'package:onevote/utils/validator.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/widgets/my_text_field.dart';
@@ -24,7 +25,8 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
   bool _obscureText = true;
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<AuthProvider>(context, listen: false);
+    final authProvider = Provider.of<AuthProvider2>(context);
+    final userProvider = Provider.of<UserProvider>(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -76,32 +78,37 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
                       MyTextButton(
                         onTap: () async {
                           if (_formKey.currentState!.validate()) {
-                            Map<String, dynamic> data = {
-                              'voter_id': vin.text,
-                              'password': password.text,
-                            };
+                            authProvider
+                                .login(vin.text, password.text)
+                                .then((response) {
+                              if (response.toString() == 'Login Successful') {
+                                User user = User(
+                                    name: response['name'],
+                                    email: response['email'],
+                                    voterid: response['voterid'],
+                                    image: response['image']);
+                                userProvider.setUserDetails(user);
 
-                            await provider.login(data).then((result) {
-                              if (provider.resMessage != '') {
+                                showAlertDialog(
+                                    context: context,
+                                    title: "Success",
+                                    widget: Text(response.toString()));
+                              } else {
                                 showAlertDialog(
                                     context: context,
                                     title: "Error",
-                                    widget: Text(provider.resMessage));
-                              } else {
-                                goToReplace(context, const HomeScreen());
+                                    widget: Text(response.toString()));
                               }
                             });
                           }
                         },
-                        child: provider.isLoading == true
-                            ? startCircularProgress(context)
-                            : const Text(
-                                "Log in",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 20.0),
-                              ),
+                        child: const Text(
+                          "Log in",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20.0),
+                        ),
                       ),
                     ],
                   )),
