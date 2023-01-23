@@ -20,7 +20,6 @@ class ElectionProvider extends ChangeNotifier {
         HttpHeaders.acceptHeader: "application/json",
       });
 
-
       if (request.statusCode == 200 || request.statusCode == 201){
 
         if (json.decode(request.body)['data'] == null) {
