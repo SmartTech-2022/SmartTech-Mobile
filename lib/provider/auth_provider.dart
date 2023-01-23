@@ -20,6 +20,7 @@ class AuthProvider extends ChangeNotifier {
       var response = await http.post(Uri.parse(uri),
           headers: {
             HttpHeaders.contentTypeHeader: "application/json",
+            
           },
           body: jsonEncode(data));
       //print(response.body);
