@@ -14,7 +14,7 @@ class SharedPreferenceHelper extends ChangeNotifier {
   }
   user(String userData) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString("user", userData);
+    await prefs.setString("user", jsonEncode(userData));
   }
 
   Future<void> setSeenOnboarding() async {
