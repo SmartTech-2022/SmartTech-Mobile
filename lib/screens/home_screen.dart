@@ -1,16 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
-import 'package:onevote/data/sharedprefs/user_prefrence.dart';
-import 'package:onevote/models/user_model.dart';
-import 'package:onevote/provider/user_provider.dart';
+import 'package:onevote/models/auth_model.dart';
 import 'package:onevote/screens/election_stats_screen.dart';
 import 'package:onevote/widgets/drawer_widget.dart';
 import 'package:onevote/widgets/elections.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/widgets/my_votes.dart';
 import 'package:onevote/utils/navigator.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,7 +20,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Future<User> getUser() => UserPreference().getUserDetails();
+  var userValue;
+  var userName;
+
+  @override
+  void initState() {
+    super.initState();
+    getUser();
+  }
+
   final int _selectedIndex = 1;
   bool hasVoted = false;
   void _onItemTapped(int index) {
@@ -38,16 +45,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ;
+    //var userDecoded = json.decode(userValue!);
+    //print(userDecoded);
     final screenWidth = MediaQuery.of(context).size.width;
-    final userProvider = Provider.of<UserProvider>(context);
-    getUser().then((value) {
-      User profile = User(
-          name: value.name,
-          email: value.email,
-          voterid: value.voterid,
-          image: value.image);
-      userProvider.setUserDetails(profile);
-    });
+   
     return Scaffold(
       backgroundColor: kSecondarycolor,
       drawer: const DrawerWidgt(),
@@ -64,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Column(
                     children: [
                       Text(
-                        "Hello ${userProvider.changeName},",
+                        "Hello $userName,",
                         style: TextStyle(
                             color: kBlackcolor, fontSize: 20, fontWeight: bold),
                       ),
@@ -185,5 +187,23 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: _onItemTapped,
       ),
     );
+  }
+
+  void getUser() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    userValue = pref.getString("user");
+    var userGrup = [];
+
+    if (userValue != null) {
+      // decode json string if found
+      var userDecoded = json.decode(userValue);
+
+      setState(() {
+        userGrup.add(userDecoded[0]);
+        userName =userDecoded['name'];
+      });
+    }
+    //Map userValue = jsonDecode(await SharedPreferenceHelper().getUserData());
+    ;
   }
 }
