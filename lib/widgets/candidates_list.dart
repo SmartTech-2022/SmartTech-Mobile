@@ -65,7 +65,7 @@ class _CandidateListState extends State<CandidateList> {
                                 children: [
                                    CircleAvatar(
                                     backgroundImage: AssetImage(
-                                        data.image==null?"assets/images/atikusmall.png":data.image!),
+                                        data!.image==null?"assets/images/atikusmall.png":data.image!),
                                     radius: 30.0,
                                   ),
                                   const Gap(10.0),
