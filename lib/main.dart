@@ -52,7 +52,7 @@ class _CheckAuthState extends State<CheckAuth> {
 
   _isLoggedIn() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    var authToken = prefs.getString('auth_token');
+    var authToken = prefs.getString('token');
     if (authToken != null) {
       setState(() => isAuth = true);
     }
