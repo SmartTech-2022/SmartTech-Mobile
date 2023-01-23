@@ -115,10 +115,9 @@ class _CandidatesScreenState extends State<CandidatesScreen> {
                                             CrossAxisAlignment.end,
                                         mainAxisAlignment:
                                             MainAxisAlignment.end,
-                                        children: const [
+                                        children: [
                                           CircleAvatar(
-                                            backgroundImage: AssetImage(
-                                                "assets/images/pdp.png"),
+                                            backgroundImage: NetworkImage(data!.partyLogo),
                                             radius: 20.0,
                                           ),
                                         ],
@@ -129,9 +128,8 @@ class _CandidatesScreenState extends State<CandidatesScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
-                                          const CircleAvatar(
-                                            backgroundImage: AssetImage(
-                                                "assets/images/atikusmall.png"),
+                                           CircleAvatar(
+                                            backgroundImage: NetworkImage(data.image),
                                             radius: 30.0,
                                           ),
                                           const Gap(10.0),
@@ -143,7 +141,7 @@ class _CandidatesScreenState extends State<CandidatesScreen> {
                                                 padding: const EdgeInsets.only(
                                                     top: 8.0),
                                                 child: Text(
-                                                  data!.name!,
+                                                  data.name!,
                                                   style: TextStyle(
                                                       color: kBlackcolor,
                                                       fontWeight: fnt400,
