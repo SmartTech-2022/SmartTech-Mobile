@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
-import 'package:onevote/screens/sucessful_screen.dart';
+import 'package:onevote/screens/confirm_candidate.dart';
 import 'package:onevote/utils/navigator.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 
@@ -53,7 +53,7 @@ class _CandidatesProfileScreenState extends State<CandidatesProfileScreen> {
               height: screenHeight(context) * 0.35,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.0),
-                image:  DecorationImage(
+                image: DecorationImage(
                   image: NetworkImage(widget.image),
                   fit: BoxFit.fitWidth,
                 ),
@@ -64,18 +64,17 @@ class _CandidatesProfileScreenState extends State<CandidatesProfileScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                 widget.candidateName,
+                  widget.candidateName,
                   style: TextStyle(fontWeight: fnt700, fontSize: 16.0),
                 ),
-                 CircleAvatar(
+                CircleAvatar(
                   backgroundImage: NetworkImage(widget.partyLogo),
                   radius: 25.0,
                 ),
               ],
             ),
             const Gap(10),
-            Text(
-                widget.candidateAbout,
+            Text(widget.candidateAbout,
                 style: TextStyle(
                   fontWeight: fnt500,
                   fontSize: 14.0,
@@ -88,7 +87,7 @@ class _CandidatesProfileScreenState extends State<CandidatesProfileScreen> {
       bottomSheet: Padding(
         padding: const EdgeInsets.all(11.0),
         child: MyTextButton(
-          onTap: () => goToPush(context, const SuccessfulScreen()),
+          onTap: () => goToPush(context, ConfirmCandidateScreen(name:widget.candidateName,image:widget.image)),
           text: 'Vote Candidate',
           bgcolor: kPrimarycolor,
           fgcolor: kSecondarycolor,
