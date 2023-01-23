@@ -20,14 +20,15 @@ class AuthProvider extends ChangeNotifier {
       var response = await http.post(Uri.parse(uri),
           headers: {
             HttpHeaders.contentTypeHeader: "application/json",
+            HttpHeaders.acceptHeader: "application/json",
           },
           body: jsonEncode(data));
-      //print(response.body);
+      print(response.statusCode);
       if (response.statusCode == 200 || response.statusCode == 201) {
         data = jsonDecode(response.body);
         result = UserModel.fromJson(data);
         _isLoading = false;
-        User map= data['user'];
+        var map = User.fromJson(data['user']);
         SharedPreferenceHelper().user(jsonEncode(map));
         SharedPreferenceHelper().authToken(data['token']);
 
@@ -49,12 +50,5 @@ class AuthProvider extends ChangeNotifier {
       _resMessage = "Please try again";
       notifyListeners();
     }
-    //on SocketException {
-    //   throw showSnackBar("No internet Connection");
-    // } on HttpException {
-    //   throw showSnackBar("Internal Issue Occured");
-    // } on FormatException {
-    //   throw showSnackBar("Bad Response");
-    // }
   }
 }
