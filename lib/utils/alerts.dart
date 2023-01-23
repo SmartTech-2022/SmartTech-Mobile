@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:onevote/constant/constant.dart';
-final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
-  GlobalKey();
 
-  showSnackBar(String message) {
-    scaffoldMessengerKey.currentState!.showSnackBar(
-      SnackBar(
-        content: Text(message),
-        duration: const Duration(seconds:  4), 
-        backgroundColor: kPrimarycolorlight,
-        behavior: SnackBarBehavior.floating,
-        dismissDirection: DismissDirection.horizontal,
+final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey = GlobalKey();
 
-      ),
-    );
-  }
-
+showSnackBar(String message) {
+  scaffoldMessengerKey.currentState!.showSnackBar(
+    SnackBar(
+      content: Text(message),
+      duration: const Duration(seconds: 4),
+      backgroundColor: kPrimarycolorlight,
+      behavior: SnackBarBehavior.floating,
+      dismissDirection: DismissDirection.horizontal,
+    ),
+  );
+}
 
 void showAlertDialog({
   required BuildContext context,
@@ -40,7 +38,7 @@ void showAlertDialog({
       });
 }
 
- startCircularProgress(BuildContext context) {
+startCircularProgress(BuildContext context) {
   return showDialog(
     context: context,
     builder: (context) {

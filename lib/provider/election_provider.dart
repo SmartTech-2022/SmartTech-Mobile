@@ -16,13 +16,11 @@ class ElectionProvider extends ChangeNotifier {
     try {
       final request = await http.get(Uri.parse(uri), headers: {
         HttpHeaders.contentTypeHeader: "application/json",
-        HttpHeaders.authorizationHeader: "Bearer $token",//
+        HttpHeaders.authorizationHeader: "Bearer $token", //
         HttpHeaders.acceptHeader: "application/json",
       });
 
-
-      if (request.statusCode == 200 || request.statusCode == 201){
-
+      if (request.statusCode == 200 || request.statusCode == 201) {
         if (json.decode(request.body)['data'] == null) {
           return ElectionModel();
         } else {
@@ -30,7 +28,7 @@ class ElectionProvider extends ChangeNotifier {
           return electionModel;
         }
       } else {
-       return ElectionModel();
+        return ElectionModel();
       }
     } catch (e) {
       return Future.error(e.toString());

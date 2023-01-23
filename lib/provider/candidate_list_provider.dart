@@ -17,8 +17,7 @@ class CandidateListProvider extends ChangeNotifier {
     try {
       final request = await http.get(Uri.parse(uri), headers: {
         HttpHeaders.contentTypeHeader: "application/json",
-        HttpHeaders.authorizationHeader:
-            "Bearer $token",
+        HttpHeaders.authorizationHeader: "Bearer $token",
         HttpHeaders.acceptHeader: "application/json",
       });
 

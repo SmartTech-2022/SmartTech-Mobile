@@ -4,7 +4,6 @@ import 'package:onevote/constant/constant.dart';
 import 'package:onevote/models/user_model.dart';
 import 'package:onevote/provider/auth_provider2.dart';
 import 'package:onevote/provider/user_provider.dart';
-import 'package:onevote/screens/home_screen.dart';
 import 'package:onevote/utils/alerts.dart';
 import 'package:onevote/utils/validator.dart';
 import 'package:onevote/widgets/my_text_button.dart';

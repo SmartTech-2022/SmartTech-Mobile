@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferenceHelper extends ChangeNotifier {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  String _userData = '';
+    String _userData = '';
   String get userData => _userData;
   String _token = '';
   String get token => _token;
@@ -12,7 +12,6 @@ class SharedPreferenceHelper extends ChangeNotifier {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString("auth_token", jsonEncode(token));
   }
-
   user(String userData) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString("user", jsonEncode(userData));
@@ -23,7 +22,6 @@ class SharedPreferenceHelper extends ChangeNotifier {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setInt('onBoarding', isSeen);
   }
-
   Future<String> getUserData() async {
     SharedPreferences value = await _prefs;
 
@@ -38,7 +36,6 @@ class SharedPreferenceHelper extends ChangeNotifier {
       return '';
     }
   }
-
   Future<String> getToken() async {
     SharedPreferences value = await _prefs;
 

@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
-import 'package:onevote/models/auth_model.dart';
 import 'package:onevote/screens/election_stats_screen.dart';
 import 'package:onevote/widgets/drawer_widget.dart';
 import 'package:onevote/widgets/elections.dart';
@@ -45,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ;
+    
     //var userDecoded = json.decode(userValue!);
     //print(userDecoded);
     final screenWidth = MediaQuery.of(context).size.width;
@@ -204,6 +203,6 @@ class _HomeScreenState extends State<HomeScreen> {
       });
     }
     //Map userValue = jsonDecode(await SharedPreferenceHelper().getUserData());
-    ;
+    
   }
 }

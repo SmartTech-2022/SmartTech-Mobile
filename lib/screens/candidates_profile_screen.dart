@@ -4,7 +4,6 @@ import 'package:onevote/constant/constant.dart';
 import 'package:onevote/screens/confirm_candidate.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/utils/navigator.dart';
-import 'package:onevote/widgets/my_text_button.dart';
 
 class CandidatesProfileScreen extends StatefulWidget {
   const CandidatesProfileScreen(

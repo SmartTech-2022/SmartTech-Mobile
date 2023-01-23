@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:onevote/provider/auth_provider2.dart';
+import 'package:onevote/provider/auth_provider.dart';
 import 'package:onevote/provider/candidate_list_provider.dart';
-import 'package:onevote/provider/user_provider.dart';
 import 'package:onevote/screens/home_screen.dart';
 import 'package:onevote/screens/login_screen.dart';
 import 'package:onevote/screens/onboarding_screen.dart';
@@ -16,8 +15,7 @@ Future main() async {
 
   runApp(MultiProvider(
     providers: [
-      ChangeNotifierProvider(create: (_) => AuthProvider2()),
-      ChangeNotifierProvider(create: (_) => UserProvider()),
+      ChangeNotifierProvider(create: (_) => AuthProvider()),
       ChangeNotifierProvider(create: (_) => CandidateListProvider()),
     ],
     child: const MyApp(),
@@ -54,7 +52,7 @@ class _CheckAuthState extends State<CheckAuth> {
 
   _isLoggedIn() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    var authToken = prefs.getString('token');
+    var authToken = prefs.getString('auth_token');
     if (authToken != null) {
       setState(() => isAuth = true);
     }
