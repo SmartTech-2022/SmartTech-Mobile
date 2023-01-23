@@ -3,13 +3,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
-import 'package:onevote/models/auth_model.dart';
 import 'package:onevote/screens/election_stats_screen.dart';
 import 'package:onevote/screens/vote.dart';
+import 'package:onevote/utils/navigator.dart';
 import 'package:onevote/widgets/elections.dart';
 import 'package:onevote/widgets/my_text_button.dart';
 import 'package:onevote/widgets/my_votes.dart';
-import 'package:onevote/utils/navigator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -59,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Gap(screenHeight(context) * 0.08),
             Container(
-              width: screenWidth *1,
+              width: screenWidth * 1,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,28 +102,16 @@ class _HomeScreenState extends State<HomeScreen> {
             GestureDetector(
               onTap: () => goToPush(context, const Vote()),
               child: Container(
-                  width: double.infinity,
-                  height: 50.0,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: kPrimarycolorlight,
-                    ),
-                    borderRadius: BorderRadius.circular(15.0),
+                width: double.infinity,
+                height: 50.0,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: kPrimarycolorlight,
                   ),
-                  child: RichText(
-                    text: TextSpan(
-                      text: 'Upcoimg Election Date: ',
-                      style: TextStyle(color: kBlackcolor),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: '1st January 2023',
-                          style:
-                              TextStyle(color: kBlackcolor, fontWeight: bold),
-                        ),
-                      ],
-                    ),
-                  )),
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+              ),
             ),
             const Gap(10),
             MyTextButton(
@@ -235,7 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       setState(() {
         userGrup.add(userDecoded[0]);
-        userName =userDecoded['name'];
+        userName = userDecoded['name'];
       });
     }
     //Map userValue = jsonDecode(await SharedPreferenceHelper().getUserData());
