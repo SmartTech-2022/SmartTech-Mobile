@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onevote/provider/auth_provider.dart';
+import 'package:onevote/provider/candidate_list_provider.dart';
 import 'package:onevote/screens/home_screen.dart';
 import 'package:onevote/screens/login_screen.dart';
 import 'package:onevote/screens/onboarding_screen.dart';
@@ -15,6 +16,7 @@ Future main() async {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => AuthProvider()),
+      ChangeNotifierProvider(create: (_) => CandidateListProvider()),
     ],
     child: const MyApp(),
   ));

@@ -14,10 +14,12 @@ class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
+  
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> with Validator {
+
   final _formKey = GlobalKey<FormState>();
   final vin = TextEditingController();
   final password = TextEditingController();
@@ -77,8 +79,8 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
                         onTap: () async {
                           if (_formKey.currentState!.validate()) {
                             Map<String, dynamic> data = {
-                              'voter_id': vin.text,
-                              'password': password.text,
+                              'voter_id': vin.text.trim(),
+                              'password': password.text.trim(),
                             };
 
                             await provider.login(data).then((result) {
@@ -93,15 +95,7 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
                             });
                           }
                         },
-                        child: provider.isLoading == true
-                            ? startCircularProgress(context)
-                            : const Text(
-                                "Log in",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 20.0),
-                              ),
+                        text: provider.isLoading==false? "Login": "Please wait..."
                       ),
                     ],
                   )),

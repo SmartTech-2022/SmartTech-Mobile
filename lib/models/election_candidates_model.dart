@@ -35,7 +35,7 @@ class Data {
         this.active,
         this.createdAt,
         this.updatedAt,
-        this.contestant,
+        this.contestants,
     });
 
     int? id;
@@ -43,7 +43,7 @@ class Data {
     int? active;
     DateTime? createdAt;
     DateTime? updatedAt;
-    List<Contestant>? contestant;
+    List<Contestant>? contestants;
 
     factory Data.fromJson(Map<String, dynamic> json) => Data(
         id: json["id"],
@@ -51,7 +51,7 @@ class Data {
         active: json["active"],
         createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
         updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
-        contestant: json["contestant"] == null ? [] : List<Contestant>.from(json["contestant"]!.map((x) => Contestant.fromJson(x))),
+        contestants: json["contestants"] == null ? [] : List<Contestant>.from(json["contestants"]!.map((x) => Contestant.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
@@ -60,7 +60,7 @@ class Data {
         "active": active,
         "created_at": createdAt?.toIso8601String(),
         "updated_at": updatedAt?.toIso8601String(),
-        "contestant": contestant == null ? [] : List<dynamic>.from(contestant!.map((x) => x.toJson())),
+        "contestants": contestants == null ? [] : List<dynamic>.from(contestants!.map((x) => x.toJson())),
     };
 }
 
