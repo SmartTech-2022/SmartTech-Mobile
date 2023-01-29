@@ -44,8 +44,9 @@ void showAlertDialog({
   return showDialog(
     context: context,
     builder: (context) {
-      return const Center(
+      return  Center(
         child: CircularProgressIndicator(
+          color: kPrimarycolor,
           strokeWidth: 10.0,
         ),
       );

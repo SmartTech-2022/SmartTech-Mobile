@@ -88,99 +88,98 @@ class _CandidatesScreenState extends State<CandidatesScreen> {
                         ));
                       } else {
                         return Container(
-                          width: double.infinity,
+                          //width: double.infinity,
                           clipBehavior: Clip.none,
-                          child: Expanded(
-                            child: ListView.builder(
-                              itemCount:
-                                  snapshot.data?.data?.contestants?.length,
-                              itemBuilder: (context, index) {
-                                final data =
-                                    snapshot.data?.data?.contestants?[index];
-                                return GestureDetector(
-                                  onTap: () => goToPush(
-                                      context,
-                                      CandidatesProfileScreen(
-                                        candidateId: data.id!,
-                                        candidateName: data.name!,
-                                        partyLogo: data.partyLogo ??
-                                            "https://inecnigeria.org/wp-content/uploads/2019/01/inec-logo-big-e1548855552200.jpg",
-                                        image: data.image ??
-                                            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png",
-                                        candidateAbout: data.about!,
-                                      )),
-                                  child: MyContainer(
-                                    padding: const EdgeInsets.fromLTRB(
-                                        10.0, 5.0, 10.0, 10.0),
-                                    height: 200,
-                                    width: double.infinity,
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            CircleAvatar(
-                                              backgroundImage:
-                                                  NetworkImage(data!.partyLogo),
-                                              radius: 20.0,
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            CircleAvatar(
-                                              backgroundImage:
-                                                  NetworkImage(data.image),
-                                              radius: 30.0,
-                                            ),
-                                            const Gap(10.0),
-                                            Expanded(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            top: 8.0),
-                                                    child: Text(
-                                                      data.name!,
-                                                      style: TextStyle(
-                                                          color: kBlackcolor,
-                                                          fontWeight: fnt400,
-                                                          fontSize: 16.0),
-                                                    ),
+                          child: ListView.builder(
+                            itemCount:
+                                snapshot.data?.data?.contestants?.length,
+                            itemBuilder: (context, index) {
+                              final data =
+                                  snapshot.data?.data?.contestants?[index];
+                              return GestureDetector(
+                                onTap: () => goToPush(
+                                    context,
+                                    CandidatesProfileScreen(
+                                      candidateId: data.id!,
+                                      candidateName: data.name!,
+                                      partyLogo: data.partyLogo ??
+                                          "https://inecnigeria.org/wp-content/uploads/2019/01/inec-logo-big-e1548855552200.jpg",
+                                      image: data.image ??
+                                          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png",
+                                      candidateAbout: data.about!,
+                                    )),
+                                child: MyContainer(
+                                  padding: const EdgeInsets.fromLTRB(
+                                      10.0, 5.0, 10.0, 10.0),
+                                  height: 150,
+                                  //width: double.infinity,
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          CircleAvatar(
+                                            backgroundImage:
+                                                NetworkImage(data!.partyLogo),
+                                            radius: 20.0,
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          CircleAvatar(
+                                            backgroundImage:
+                                                NetworkImage(data.image),
+                                            radius: 30.0,
+                                          ),
+                                          const Gap(10.0),
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 8.0),
+                                                  child: Text(
+                                                    data.name!,
+                                                    style: TextStyle(
+                                                        color: kBlackcolor,
+                                                        fontWeight: fnt400,
+                                                        fontSize: 16.0),
                                                   ),
-                                                  Container(
-                                                    child: Text(
-                                                      data.about!,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      maxLines: 3,
-                                                      style: TextStyle(
-                                                          color: kBlackcolor,
-                                                          fontWeight: fnt400,
-                                                          fontSize: 12.0),
-                                                    ),
+                                                ),
+                                                Container(
+                                                  child: Text(
+                                                    data.about!.substring(0,105),
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    //maxLines: 3,
+                                                    style: TextStyle(
+                                                        color: kBlackcolor,
+                                                        fontWeight: fnt400,
+                                                        fontSize: 12.0),
                                                   ),
-                                                ],
-                                              ),
+                                                ),
+                                                const Gap(10),
+                                              ],
                                             ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
-                                );
-                              },
-                            ),
+                                ),
+                              );
+                            },
                           ),
                         );
                       }

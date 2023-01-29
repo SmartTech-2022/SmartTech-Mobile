@@ -1,7 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:onevote/screens/login_screen.dart';
-import 'package:onevote/utils/navigator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferenceHelper extends ChangeNotifier {

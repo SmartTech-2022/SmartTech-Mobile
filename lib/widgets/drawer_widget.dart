@@ -1,12 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:onevote/constant/constant.dart';
 import 'package:onevote/data/sharedprefs/shared_preference_helper.dart';
 import 'package:onevote/screens/login_screen.dart';
 import 'package:onevote/utils/navigator.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:onevote/utils/navigator.dart';
 // import 'package:onevote/screens/home_screen.dart';
 
@@ -25,12 +22,6 @@ class _DrawerWidgtState extends State<DrawerWidgt> {
   var userEmail;
 
   var userImage;
-
-  @override
-  void initState() {
-    super.initState();
-    getUser();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -91,25 +82,5 @@ class _DrawerWidgtState extends State<DrawerWidgt> {
         ],
       ),
     );
-  }
-
-  void getUser() async {
-    final SharedPreferences pref = await SharedPreferences.getInstance();
-    userValue = pref.getString("user");
-    var userGrup = [];
-
-    if (userValue != null) {
-      // decode json string if found
-      var userDecoded = json.decode(userValue);
-
-      setState(() {
-        userGrup.add(userDecoded[0]);
-        userName = userDecoded['name'];
-        userEmail = userDecoded['email'];
-        userImage = userDecoded['image'];
-      });
-    }
-    //Map userValue = jsonDecode(await SharedPreferenceHelper().getUserData());
-    ;
   }
 }

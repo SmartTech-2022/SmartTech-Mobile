@@ -221,7 +221,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (userValue != null) {
       // decode json string if found
       var userDecoded = json.decode(userValue);
-
+      //print(userDecoded);
       setState(() {
         userGrup.add(userDecoded[0]);
         userName = userDecoded['name'];

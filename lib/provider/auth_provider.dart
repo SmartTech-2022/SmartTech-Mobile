@@ -13,7 +13,7 @@ class AuthProvider extends ChangeNotifier {
   String get resMessage => _resMessage;
   login(data) async {
     String uri = EndPoints.baseUrl + EndPoints.login;
-    UserModel result;
+    var result;
     try {
       _isLoading = true;
       notifyListeners();
@@ -23,7 +23,7 @@ class AuthProvider extends ChangeNotifier {
             HttpHeaders.acceptHeader: "application/json",
           },
           body: jsonEncode(data));
-      print(response.statusCode);
+      // print(response.statusCode);
       if (response.statusCode == 200 || response.statusCode == 201) {
         data = jsonDecode(response.body);
         result = UserModel.fromJson(data);

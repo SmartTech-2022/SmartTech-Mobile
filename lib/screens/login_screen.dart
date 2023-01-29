@@ -14,12 +14,10 @@ class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> with Validator {
-
   final _formKey = GlobalKey<FormState>();
   final vin = TextEditingController();
   final password = TextEditingController();
@@ -76,27 +74,28 @@ class _LoginScreenState extends State<LoginScreen> with Validator {
                       ),
                       const Gap(30),
                       MyTextButton(
-                        onTap: () async {
-                          if (_formKey.currentState!.validate()) {
-                            Map<String, dynamic> data = {
-                              'voter_id': vin.text.trim(),
-                              'password': password.text.trim(),
-                            };
-
-                            await provider.login(data).then((result) {
-                              if (provider.resMessage != '') {
-                                showAlertDialog(
-                                    context: context,
-                                    title: "Error",
-                                    widget: Text(provider.resMessage));
-                              } else {
-                                goToReplace(context, const HomeScreen());
-                              }
-                            });
-                          }
-                        },
-                        text: provider.isLoading==false? "Login": "Please wait..."
-                      ),
+                          onTap: () async {
+                            if (_formKey.currentState!.validate()) {
+                              Map<String, dynamic> data = {
+                                'voter_id': vin.text.trim(),
+                                'password': password.text.trim(),
+                              };
+                              startCircularProgress(context);
+                              await provider.login(data).then((result) {
+                                if (provider.resMessage != '') {
+                                  stopCircularProgress(context);
+                                  showAlertDialog(
+                                      context: context,
+                                      title: "Error",
+                                      widget: Text(provider.resMessage));
+                                } else {
+                                  goToReplace(context, const HomeScreen());
+                                }
+                                ;
+                              });
+                            }
+                          },
+                          text: "Login"),
                     ],
                   )),
             ],
